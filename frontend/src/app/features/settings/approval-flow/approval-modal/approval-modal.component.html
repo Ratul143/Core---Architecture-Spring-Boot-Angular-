@@ -1,0 +1,41 @@
+<nz-card [nzTitle]="nextStatusName + ' FOR APPROVAL'">
+  <form [formGroup]="sendForNextApprovalGroup" nz-form nzLayout="vertical">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-textarea-count [nzMaxCharacterCount]="100">
+          <textarea
+            [nzAutosize]="{ minRows: 2, maxRows: 3 }"
+            formControlName="remarks"
+            nz-input
+            placeholder="Remarks..."
+            rows="4"
+          ></textarea>
+        </nz-textarea-count>
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <div class="d-flex justify-content-between my-5">
+      <button
+        (click)="declineToPreviousApproval()"
+        [disabled]="!previousStatusName"
+        class="mx-3"
+        mat-dialog-close="true"
+        nz-button
+        nzDanger
+        nzType="primary"
+        type="button"
+      >
+        <i class="fa-solid fa-chevron-left"></i>&nbsp; Reject
+      </button>
+      <button
+        (click)="proceedToNextApproval()"
+        class="save-button"
+        nz-button
+        nzType="primary"
+      >
+        {{ nextStatusName ?? "Previous" }}&nbsp;<i
+          class="fa-solid fa-chevron-right"
+        ></i>
+      </button>
+    </div> -->
+  </form>
+</nz-card>

@@ -1,0 +1,114 @@
+<mat-table
+  #table
+  [dataSource]="dataset"
+  matSort
+  (matSortChange)="sortChange($event)"
+>
+  <!-- checkbox header -->
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        color="primary"
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *cdkCellDef="let row">
+      <mat-checkbox
+        color="primary"
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <!-- table index column -->
+  <ng-container matColumnDef="index">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *cdkCellDef="let i = index">{{
+      currentLanguage == "en"
+        ? paginator.pageSize * paginator.pageIndex + i + 1
+        : translateNumber(paginator.pageSize * paginator.pageIndex + i + 1)
+    }}</mat-cell>
+  </ng-container>
+
+  <!-- table dynamic columns -->
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.columnDef"
+  >
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>{{
+      column.header
+    }}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{
+      currentLanguage == "en" ? row[column.columnDef] : row[column.columnDefBn]
+    }}</mat-cell>
+  </ng-container>
+
+  <!-- table action column -->
+  <!-- <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let element" action-buttons [value]="element" (buttonAction)="onTableAction($event)">
+        {{ element.weight }}
+      </mat-cell>
+    </ng-container> -->
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>{{ "Action" }}</mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index">
+      <ng-container *ngIf="listButton.length < 3">
+        <button
+          mat-stroked-button
+          *ngFor="let button of listButton"
+          matTooltip="{{ button.toolTip || '' }}"
+          [disabled]="button.disabled && button.disabled(element)"
+          [color]="button.color ? button.color : 'basic'"
+          (click)="announceClick(button.listener, i)"
+          class="button-margin"
+        >
+          <mat-icon>{{ button.icon || "" }}</mat-icon>
+          <span class="d-none d-md-inline"> {{ button.text || "" }}</span>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="listButton.length > 2">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            [disabled]="button.disabled && button.disabled(element)"
+            *ngFor="let button of listButton"
+            mat-menu-item
+            matTooltip="'Hello'"
+            (click)="announceClick(button.listener, i)"
+          >
+            <mat-icon>{{ button.icon || "" }}</mat-icon>
+            <span> {{ button.text || "" }}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<!-- table pagination -->
+<mat-paginator
+  #paginator
+  [length]="totalCount"
+  (page)="pageChange($event)"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20, 50]"
+  showFirstLastButtons
+>
+</mat-paginator>

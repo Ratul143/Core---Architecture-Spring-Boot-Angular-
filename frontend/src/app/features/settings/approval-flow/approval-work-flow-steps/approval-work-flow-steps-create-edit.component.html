@@ -1,0 +1,166 @@
+<nz-card nzTitle="Approval Steps">
+  <form (submit)="submit()">
+    <div class="row">
+      <div class="col-md-12">
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Forms</nz-form-label>
+          <nz-form-control
+            [nzSm]="19"
+            [nzXs]="24"
+            nzErrorTip="Please select a form!"
+          >
+            <nz-select
+              (ngModelChange)="getApprovalFlowByForm($event)"
+              [(ngModel)]="approvalWorkFlowStepsGroup.formId"
+              name="formName"
+              nzAllowClear
+              nzPlaceHolder="Supplier Requisition Form"
+              nzShowSearch
+            >
+              <nz-option
+                *ngFor="let element of approvalWorkFlowForCollection"
+                [nzLabel]="element.flowFor"
+                [nzValue]="element.id"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <table
+          class="table table-bordered table-striped align-middle table-sm text-center my-5"
+          style="table-layout: fixed"
+        >
+          <thead>
+            <tr>
+              <th>Current Status</th>
+              <th>Next Status</th>
+              <th>Final</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let mainElement of approvalWorkFlowStepsGroup.steps;
+                index as i
+              "
+            >
+              <td>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please select a form!">
+                    <nz-select
+                      [(ngModel)]="mainElement.currentWorkFlowId"
+                      name="currentWorkFlow_{{ i }}"
+                      nzAllowClear
+                      nzPlaceHolder="Draft"
+                      nzShowSearch
+                    >
+                      <nz-option
+                        *ngFor="let element of approvalWorkFlowCollection"
+                        [nzLabel]="element.approvalWorkFlowStatus.statusName"
+                        [nzValue]="element.id"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </td>
+              <!--            <td>-->
+              <!--              <nz-form-item>-->
+              <!--                <input [(ngModel)]="mainElement.currentStatusLevel" min="0" name="currentStatusLevel_{{i}}" nz-input-->
+              <!--                       placeholder="0" type="number">-->
+              <!--              </nz-form-item>-->
+              <!--            </td>-->
+              <td>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please select a form!">
+                    <nz-select
+                      [(ngModel)]="mainElement.nextWorkFlowId"
+                      name="nextWorkFlow_{{ i }}"
+                      nzAllowClear
+                      nzPlaceHolder="Send For Approval"
+                      nzShowSearch
+                    >
+                      <nz-option
+                        *ngFor="let element of approvalWorkFlowCollection"
+                        [nzLabel]="element.approvalWorkFlowStatus.statusName"
+                        [nzValue]="element.id"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </td>
+              <!--            <td>-->
+              <!--              <nz-form-item>-->
+              <!--                <nz-form-control nzErrorTip="Please select a form!">-->
+              <!--                  <nz-form-item>-->
+              <!--                    <input [(ngModel)]="mainElement.nextStatusLevel" min="0" name="nextStatusLevel_{{i}}" nz-input-->
+              <!--                           placeholder="1" type="number">-->
+              <!--                  </nz-form-item>-->
+              <!--                </nz-form-control>-->
+              <!--              </nz-form-item>-->
+              <!--            </td>-->
+              <td>
+                <nz-form-item>
+                  <nz-form-control
+                    [nzSm]="19"
+                    [nzXs]="24"
+                    nzErrorTip="Please select a form!"
+                  >
+                    <nz-select
+                      [(ngModel)]="mainElement.isFinal"
+                      name="isFinal_{{ i }}"
+                      nzAllowClear
+                      nzPlaceHolder="Yes"
+                      nzShowSearch
+                    >
+                      <nz-option [nzValue]="0" nzLabel="No"></nz-option>
+                      <nz-option [nzValue]="1" nzLabel="Yes"></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </td>
+              <td>
+                <ng-container>
+                  <a
+                    (click)="addRow()"
+                    *ngIf="approvalWorkFlowStepsGroup.steps.length - 1 == i"
+                    data-placement="bottom"
+                    data-toggle="tooltip"
+                    href="javascript:"
+                    title="add new item"
+                    ><i class="fa fa-plus f-20 text-primary"></i
+                  ></a>
+                </ng-container>
+                <nz-divider nzType="vertical"></nz-divider>
+                <ng-container>
+                  <a
+                    (click)="deleteRow(mainElement)"
+                    *ngIf="approvalWorkFlowStepsGroup.steps.length >= 2"
+                    data-placement="bottom"
+                    data-toggle="tooltip"
+                    href="javascript:"
+                    title="remove item"
+                    ><i class="fa fa-times f-20 text-danger"></i
+                  ></a>
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center my-3">
+          <button class="save-button" nz-button nzType="primary">
+            {{ operation }}
+          </button>
+          <button
+            class="mx-3"
+            mat-dialog-close="true"
+            nz-button
+            nzType="default"
+            type="button"
+          >
+            <i class="fa-regular fa-hand"></i>&nbsp; Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</nz-card>

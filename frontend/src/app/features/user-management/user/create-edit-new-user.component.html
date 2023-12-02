@@ -1,0 +1,122 @@
+<nz-card nzTitle="{{ data?.operation }} User">
+  <div class="element">
+    <form
+      (ngSubmit)="submit()"
+      [formGroup]="userGroup"
+      nz-form
+      style="height: 600px; overflow: auto"
+    >
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Username!">
+          <nz-form-label [nzSpan]="8" nzRequired>Username</nz-form-label>
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              formControlName="username"
+              id="username"
+              name="username"
+              nz-input
+              onkeypress="return event.charCode != 32"
+              placeholder="Username"
+              required
+              type="text"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Full Name!">
+          <nz-form-label [nzSpan]="8" nzRequired>Full Name</nz-form-label>
+          <nz-input-group nzPrefixIcon="idcard">
+            <input
+              formControlName="fullName"
+              id="fullName"
+              name="fullName"
+              nz-input
+              placeholder="Full Name"
+              required
+              type="text"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Cell No.!">
+          <nz-form-label [nzSpan]="8" nzRequired>Cell No.</nz-form-label>
+          <nz-input-group nzPrefixIcon="mobile">
+            <input
+              formControlName="cellNo"
+              id="cellNo"
+              name="cellNo"
+              nz-input
+              placeholder="Cell No."
+              required
+              type="text"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your email!">
+          <nz-form-label [nzSpan]="8" nzRequired>Email</nz-form-label>
+          <nz-input-group nzPrefixIcon="mail">
+            <input
+              formControlName="email"
+              id="email"
+              nz-input
+              placeholder="Email"
+              required
+              type="email"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="The input is user role!">
+          <nz-form-label [nzSpan]="8" nzRequired>Role</nz-form-label>
+          <nz-input-group nzPrefixIcon="user-switch">
+            <nz-select
+              formControlName="role"
+              nzAllowClear
+              nzPlaceHolder="Role"
+              nzShowSearch
+              required
+            >
+              <nz-option
+                *ngFor="let collection of roleCollection"
+                [nzLabel]="collection?.role.replace('ROLE_', ' ')"
+                [nzValue]="collection?.role"
+              ></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="my-2" nz-row>
+        <nz-form-control>
+          <mat-slide-toggle formControlName="enabled">Active</mat-slide-toggle>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="my-2" nz-row>
+        <nz-form-control>
+          <mat-slide-toggle formControlName="accountLocked"
+            >Locked</mat-slide-toggle
+          >
+        </nz-form-control>
+      </nz-form-item>
+      <div class="text-center mb-5">
+        <button
+          class="mx-3"
+          mat-dialog-close="true"
+          nz-button
+          nzType="default"
+          type="button"
+        >
+          <i class="fa fa-times"></i>&nbsp;Close
+        </button>
+        <button class="save-button" nz-button nzType="primary">
+          {{ data.operation == "Create" ? "Create" : "Update" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</nz-card>

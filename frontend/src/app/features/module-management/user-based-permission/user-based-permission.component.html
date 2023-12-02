@@ -1,0 +1,120 @@
+<div *ngIf="permission('read')" class="row">
+  <div class="col-md-12">
+    <nz-card nzTitle="User Based Permission List">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between flex-wrap">
+          <nz-input-group
+            [nzPrefix]="suffixIconSearch"
+            class="my-2"
+            style="max-width: 600px"
+          >
+            <input
+              (ngModelChange)="searchByUsername($event)"
+              [(ngModel)]="searchValueForUsername"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="User name"
+              type="text"
+            />
+            <!-- <input
+              (ngModelChange)="searchByEmail($event)"
+              [(ngModel)]="searchValueForEmail"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="Email"
+              type="text"
+            />
+            <input
+              (ngModelChange)="searchByUserType($event)"
+              [(ngModel)]="searchValueForUserType"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="User Type"
+              type="text"
+            />
+            <input
+              (ngModelChange)="searchByCellNo($event)"
+              [(ngModel)]="searchValueForCellNo"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="Cell No"
+              type="text"
+            /> -->
+          </nz-input-group>
+          <div class="my-2">
+            Show
+            <select
+              (ngModelChange)="itemsOnChange($event)"
+              [(ngModel)]="itemsPerPage"
+            >
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="500">500</option>
+              <option value="10000">All</option>
+            </select>
+            entries
+          </div>
+        </div>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+        <div class="table-responsive">
+          <table
+            class="table table-sm text-center table-bordered table-striped"
+          >
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>User</th>
+                <th *ngIf="permission('update') || permission('delete')">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let collection of userCollection
+                    | paginate
+                      : {
+                          currentPage: pageOffset,
+                          itemsPerPage: itemsPerPage,
+                          totalItems: totalItems
+                        };
+                  index as i
+                "
+              >
+                <td>{{ getSL(i + 1) }}</td>
+                <td>
+                  {{ collection?.fullName || "N/A" }}
+                </td>
+                <td *ngIf="permission('update') || permission('delete')">
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <span
+                    (click)="createOrUpdate(collection)"
+                    class="cursor-pointer"
+                    style="color: #3c8dbc"
+                    ><i class="fa fa-fw fa-edit"></i>
+                    <nz-divider nzType="vertical"></nz-divider>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <nz-empty *ngIf="!userCollection?.length"></nz-empty>
+          <div class="d-flex justify-content-between">
+            <p>Total Records: {{ totalItems }}</p>
+            <pagination-controls
+              (pageChange)="pageChange($event)"
+              class="pull-right"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+</div>
+<app-no-permission></app-no-permission>

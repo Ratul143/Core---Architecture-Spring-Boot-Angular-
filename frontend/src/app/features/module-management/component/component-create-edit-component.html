@@ -1,0 +1,109 @@
+<nz-card nzTitle="{{operation}} Component">
+  <form (ngSubmit)="submit()" [formGroup]="_componentGroup" nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Module</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please select module!">
+        <nz-select
+          formControlName="module"
+          nzAllowClear
+          nzPlaceHolder="e.g. INVENTORY"
+          nzShowSearch
+        >
+          <nz-option
+            *ngFor="let collection of moduleCollection"
+            [nzLabel]="collection?.moduleName"
+            [nzValue]="collection?.id"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Sub Module</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please select sub module!">
+        <nz-select
+          formControlName="subModule"
+          nzAllowClear
+          nzPlaceHolder="e.g. INVENTORY ATTRIB."
+          nzShowSearch
+        >
+          <nz-option
+            *ngFor="let collection of subModuleCollection"
+            [nzLabel]="collection?.subModuleName"
+            [nzValue]="collection?.uniqueKey"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Component</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input
+          formControlName="component"
+          nz-input
+          placeholder="e.g. RAW MATERIAL"
+          type="text"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Icon</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input
+          formControlName="icon"
+          nz-input
+          placeholder="e.g. appstore"
+          type="text"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Path</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input
+          formControlName="path"
+          nz-input
+          placeholder="e.g. /sample-requisition-list"
+          type="text"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Sort Order</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input
+          formControlName="sortOrder"
+          nz-input
+          oninput="this.value = this.value.toUpperCase()"
+          placeholder="e.g. 0"
+          type="text"
+          numbersOnly
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Active</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <label formControlName="isActive" nz-checkbox></label>
+      </nz-form-control>
+    </nz-form-item>
+    <div class="text-center my-2">
+      <button
+        (click)="resetForm()"
+        class="mx-3 my-2"
+        nz-button
+        nzType="default"
+        type="button"
+      >
+        <i class="fa-regular fa-hand"></i>&nbsp; Reset
+      </button>
+      <button
+        [disabled]="!_componentGroup.valid"
+        class="save-button"
+        nz-button
+        nzType="primary"
+      >
+        {{operation == 'Update' ? 'Update' : 'Create'}}
+      </button>
+    </div>
+  </form>
+</nz-card>

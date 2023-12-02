@@ -1,0 +1,52 @@
+<nz-card nzTitle="{{operation == 'Update' ? 'Update' : 'Create'}} User Form Approval Flow">
+  <form (submit)="submit()" [formGroup]="userFormApprovalFlowGroup">
+    <div class="row">
+      <div class="col-md-12">
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Forms</nz-form-label>
+          <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please select a form!">
+            <nz-select formControlName="form" nzAllowClear
+                       nzPlaceHolder="Supplier Requisition Form"
+                       nzShowSearch>
+              <nz-option *ngFor="let element of approvalWorkFlowForCollection"
+                         [nzLabel]="element?.flowFor"
+                         [nzValue]="element?.id"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Status</nz-form-label>
+          <nz-form-control nzErrorTip="Please select a status!">
+            <nz-select formControlName="status" nzAllowClear
+                       nzPlaceHolder="Send For Approval"
+                       nzShowSearch>
+              <nz-option *ngFor="let element of approvalWorkFlowStatusCollection"
+                         [nzLabel]="element?.approvalWorkFlowStatus?.statusName"
+                         [nzValue]="element?.id"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>User</nz-form-label>
+          <nz-form-control nzErrorTip="Please select an user!">
+            <nz-select formControlName="user" nzAllowClear
+                       nzPlaceHolder="Md. Atiq"
+                       nzShowSearch>
+              <nz-option *ngFor="let element of userListCollection"
+                         [nzLabel]="element?.firstName + ' ' + element?.lastName"
+                         [nzValue]="element?.id"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <div class="text-center my-3">
+          <button class="mx-3" mat-dialog-close="true" nz-button nzType="default" type="button">
+            <i class="fa-regular fa-hand"></i>&nbsp; Close
+          </button>
+          <button [disabled]="!userFormApprovalFlowGroup.valid" class="save-button" nz-button
+                  nzType="primary">{{operation}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</nz-card>

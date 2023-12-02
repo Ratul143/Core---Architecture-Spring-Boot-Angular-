@@ -1,0 +1,237 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+    class="menu-sidebar"
+    nzBreakpoint="md"
+    nzCollapsible
+  >
+    <!-- <div *ngIf="!isCollapsed" class="sidebar-logo text-center">
+      <span class="text-white">
+        <img
+          class="img-responsive img-rounded user-pic"
+          src="{{ defaultImg }}"
+          alt="User picture"
+        />&nbsp;DAL PRODUCTION
+      </span>
+    </div> -->
+    <div *ngIf="!isCollapsed" class="sidebar-profile">
+      <div class="user-pic">
+        <img
+          class="img-responsive img-rounded"
+          src="{{ defaultImg }}"
+          alt="User picture"
+        />
+      </div>
+      <div class="user-info">
+        <span class="user-name"> DAL PRODUCTION </span>
+      </div>
+    </div>
+    <div
+      *ngIf="isCollapsed"
+      class="text-center"
+      style="background: #3c8dbc; padding: 14px"
+    >
+      <span class="text-white">
+        <div class="user-pic">
+          <img
+            class="img-responsive img-rounded"
+            src="{{ defaultImg }}"
+            alt="User picture"
+          />
+        </div>
+      </span>
+    </div>
+
+    <!-- Menu List with Dropdown Started from here -->
+
+    <ul nz-menu nzMode="inline" nzTheme="dark">
+      <li
+        *ngFor="let moduleCollection of permissionCollection?.modules"
+        [nzIcon]="moduleCollection?.icon"
+        [nzTitle]="moduleCollection?.moduleName"
+        nz-submenu
+      >
+        <ng-container *ngIf="permissionCollection?.subModules?.length">
+          <ng-container
+            *ngFor="let subModuleCollection of permissionCollection?.subModules"
+          >
+            <ng-container
+              *ngIf="moduleCollection?.id == subModuleCollection?.module?.id"
+            >
+              <ul>
+                <li
+                  [nzIcon]="subModuleCollection?.icon"
+                  [nzTitle]="subModuleCollection?.subModuleName"
+                  nz-submenu
+                >
+                  <ul>
+                    <ng-container
+                      *ngFor="
+                        let componentCollection of permissionCollection?.components
+                      "
+                    >
+                      <li
+                        *ngIf="
+                          componentCollection.subModule?.id != null &&
+                          componentCollection.subModule?.id ==
+                            subModuleCollection?.id &&
+                          componentCollection.module?.id == moduleCollection?.id
+                        "
+                        nz-menu-item
+                        nzMatchRouter
+                      >
+                        <span
+                          nz-icon
+                          [nzType]="componentCollection?.icon"
+                          *ngIf="componentCollection?.icon"
+                          style="display: inline-block"
+                        ></span>
+                        <a [routerLink]="[componentCollection?.path]">{{
+                          componentCollection?.componentName
+                        }}</a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ul>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <ng-container>
+          <ng-container
+            *ngFor="let componentCollection of permissionCollection?.components"
+          >
+            <ul>
+              <li
+                *ngIf="
+                  componentCollection?.module?.id == moduleCollection?.id &&
+                  !componentCollection?.subModule
+                "
+                nz-menu-item
+                nzMatchRouter
+              >
+                <span
+                  nz-icon
+                  [nzType]="componentCollection?.icon"
+                  *ngIf="componentCollection?.icon"
+                  style="display: inline-block"
+                ></span>
+                <a [routerLink]="[componentCollection?.path]">{{
+                  componentCollection?.componentName
+                }}</a>
+              </li>
+            </ul>
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+
+    <!-- New Menu Item without Submenu Started Here -->
+
+    <!-- <ul nz-menu nzMode="inline" nzTheme="dark">
+      <ng-container
+        *ngFor="let componentCollection of permissionCollection?.components"
+      >
+        <ul>
+          <li
+            *ngIf="
+              componentCollection.module === null &&
+              componentCollection.isActive === true
+            "
+            nz-menu-item
+            nzMatchRouter
+          >
+            <span
+              nz-icon
+              [nzType]="componentCollection?.icon"
+              *ngIf="componentCollection?.icon"
+              style="display: inline-block"
+            ></span>
+            <a
+              [routerLink]="[
+                componentCollection?.path,
+                componentCollection?.id
+              ]"
+              >{{ componentCollection?.componentName }}</a
+            >
+          </li>
+        </ul>
+      </ng-container>
+    </ul> -->
+
+    <!-- New Menu Item without Submenu Ended Here -->
+
+    <!-- Menu List with Dropdown Ended from here -->
+
+    <ul
+      [nzInlineCollapsed]="isCollapsed"
+      nz-menu
+      nzMode="inline"
+      nzTheme="dark"
+    ></ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span (click)="isCollapsed = !isCollapsed" class="header-trigger">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+        <span class="float-end px-4 nav-dropdown-opacity">
+          <a
+            [nzDropdownMenu]="menu"
+            class="nav-dropdown"
+            nz-dropdown
+            nzTrigger="click"
+          >
+            <span>{{
+              authService.findUserRole()?.split("ROLE_")[1]?.replace("_", " ")
+            }}</span>
+            <i class="fa-solid fa-caret-down mx-1" nzType="down"></i
+          ></a>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul class="selectable-menu float-right" nz-menu nzSelectable>
+              <li class="user-header">
+                <img [nzSrc]="profileImg" class="avatar-img" nz-image />
+                <p class="text-white font-weight-bold">
+                  {{ authService?.findUserFromLocalCache()?.email }}
+                </p>
+                <small
+                  class="text-white font-weight-bold"
+                  style="text-transform: capitalize"
+                  >{{ authService?.findUserFromLocalCache()?.fullName }}</small
+                >
+              </li>
+              <li
+                class="user-body d-flex justify-content-between"
+                id="btn-section"
+              >
+                <div class="pull-left">
+                  <a
+                    (click)="changePassword()"
+                    class="btn btn-block btn-success"
+                    ><i class="fa fa-cog"></i>&nbsp;Change password</a
+                  >
+                </div>
+                <div class="pull-right">
+                  <a (click)="logout()" class="btn btn-block btn-danger"
+                    ><i class="fa fa-power-off"></i>&nbsp;Sign out</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </nz-dropdown-menu>
+        </span>
+      </div>
+      <div *ngIf="loaderService?.isLoading | async" class="loader-container">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

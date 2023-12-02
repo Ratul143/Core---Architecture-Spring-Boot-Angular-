@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Production_Info" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="75d8fea2-4ed8-4594-97ab-33d215c40fe6">
+    <field name="actualNoOfSheet" class="java.lang.Double">
+    </field>
+    <field name="blanksThickness" class="java.lang.String">
+    </field>
+    <field name="buttonType" class="java.lang.String">
+    </field>
+    <field name="buyerName" class="java.lang.String">
+    </field>
+    <field name="calculatedNoOfSheet" class="java.lang.Double">
+    </field>
+    <field name="categoryName" class="java.lang.String">
+    </field>
+    <field name="colorName" class="java.lang.String">
+    </field>
+    <field name="customerName" class="java.lang.String">
+    </field>
+    <field name="finishedThickness" class="java.lang.String">
+    </field>
+    <field name="isCertificationRequired" class="java.lang.Boolean">
+    </field>
+    <field name="isThirdPartyTestReq" class="java.lang.Boolean">
+    </field>
+    <field name="leign" class="java.lang.String">
+    </field>
+    <field name="logo" class="java.lang.String">
+    </field>
+    <field name="mktEmpName" class="java.lang.String">
+    </field>
+    <field name="orderNo" class="java.lang.String">
+    </field>
+    <field name="orderQty" class="java.lang.Double">
+    </field>
+    <field name="perSheetWeight" class="java.lang.Double">
+    </field>
+    <field name="processOfCasting" class="java.lang.String">
+    </field>
+    <field name="productionNo" class="java.lang.String">
+    </field>
+    <field name="requiredTotalRmQty" class="java.lang.Double">
+    </field>
+    <field name="sampleNo" class="java.lang.String">
+    </field>
+    <field name="subUnitName" class="java.lang.String">
+    </field>
+    <field name="totalResinQty" class="java.lang.Double">
+    </field>
+    <field name="unitName" class="java.lang.String">
+    </field>
+    <field name="status" class="java.lang.String">
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="114" splitType="Stretch">
+            <staticText>
+                <reportElement x="302" y="10" width="199" height="30" uuid="c300b1c8-6365-4dc1-a6e3-48bf98aaa684"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Arial Black" size="14"/>
+                </textElement>
+                <text><![CDATA[Recipe of Plastic Button]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="351" y="40" width="100" height="30" uuid="e8b71037-fb2c-4642-969d-0a1ff10bd8cb"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Arial Black" size="14"/>
+                </textElement>
+                <text><![CDATA[Chalk Button]]></text>
+            </staticText>
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="620" y="50" width="180" height="30" uuid="08897ad9-abac-4a80-bbbf-8c5725608b47"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Arial Black" size="14"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="-10" y="101" width="120" height="1" uuid="a12733ca-0a56-46c5-9fdf-7b10e7062086"/>
+            </line>
+            <line>
+                <reportElement x="220" y="101" width="602" height="1" uuid="c2370b77-ff53-4d89-85b1-3f47209d590a"/>
+            </line>
+            <staticText>
+                <reportElement x="110" y="90" width="110" height="19" uuid="9cb930e9-2249-405a-86dd-bfbe90988410"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Production Info]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="251" splitType="Stretch">
+            <staticText>
+                <reportElement x="1" y="10" width="225" height="30" uuid="29d1ac11-d89b-4023-951a-5db2e122cc03"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Production No:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="49" width="179" height="30" uuid="dc371e7d-f302-4d49-8816-bd0cde70406f"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Factory:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="49" width="202" height="30" uuid="0a5e6874-4ac9-48a8-a672-16f337023c90"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Core Team:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="49" width="164" height="30" uuid="620c0610-658b-4926-9278-9ecf5406e293"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Order Qty:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="594" y="49" width="184" height="30" uuid="c8d76249-9fbf-4f30-9930-cc5548cc50b2"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Calculated No of Sheet:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="525" y="10" width="235" height="30" uuid="b448d6d4-7c1c-44cd-94f8-21d76138b84e"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Sample No:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="250" y="10" width="251" height="30" uuid="eb3b1566-d208-455d-898b-6ed5df0022ca"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Order No:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="79" width="179" height="30" uuid="cc5e5710-9bdb-4424-b35d-8c9f7ece97d9"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Unit:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="594" y="79" width="184" height="30" uuid="83872b0f-886a-4d84-b175-54ca24ad6d12"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Actual No of Sheet:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="79" width="202" height="30" uuid="4385a8cd-e37d-4aab-9d1b-527471ef6cc0"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Customer Name:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="79" width="164" height="30" uuid="814cd8a0-26a6-4aa1-9267-cde60eb05310"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Finished Thickness:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="109" width="202" height="30" uuid="9b6e8177-e6ac-431f-b3ef-fdf578bd5b6e"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Buyer Name:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="109" width="164" height="30" uuid="540ef264-76cd-4051-9151-9f92b6a9cc7b"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Blank Thickness:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="594" y="109" width="184" height="30" uuid="eb1540a2-ab40-4218-88d2-e8768648801a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total Resin Qty:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="109" width="179" height="30" uuid="afaa6069-51b4-415a-bffb-c7ade4269f72"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Sub Unit:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="139" width="202" height="30" uuid="d988639b-5751-41fa-a355-fafa92d6fe58"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[3rd Party Test Req:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="139" width="164" height="30" uuid="6656b212-a4e1-41cb-8c7b-412b1ccba322"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Leign:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="594" y="139" width="184" height="30" uuid="cbc0f91a-01a5-402d-b589-a094cb410d43"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total RM Qty:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="139" width="179" height="30" uuid="438f3bb4-21e3-4d65-9aaf-4aea80bf5dc0"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Item Category:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="170" width="202" height="30" uuid="96086a69-d068-489e-9987-d8421b24d935"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Certificate Req:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="170" width="164" height="30" uuid="08a20a6b-5d03-4096-9316-a3886e688c62"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Process of Casting:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="594" y="170" width="184" height="30" uuid="65c28ef0-1263-4435-be5b-eff0c7dc619a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Status:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="170" width="179" height="30" uuid="aefb22cc-53f4-4712-96e8-99a8566f8d2e"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Type of Button:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="196" y="200" width="202" height="30" uuid="ba8292bd-61de-470f-abc4-dc0ddb87acb6"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Logo Type:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="413" y="200" width="164" height="30" uuid="c0de41b4-6786-4015-885b-8f38b5454d3a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Per Sheet Weight:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="1" y="200" width="179" height="30" uuid="2ef98839-217b-4bb7-9607-fcd039cfe3b7"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Color:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="84" y="10" width="140" height="30" uuid="115833d5-a152-40b0-a696-ca3352edfa7b"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{PRODUCTION_NO}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="308" y="10" width="100" height="30" uuid="bd96ab4a-3777-411c-a038-3b1407259ff9"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ORDER_NO}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="589" y="10" width="100" height="30" uuid="7ba98b0e-b90f-4b8e-bb89-925746c753af"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{SAMPLE_NO}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="261" y="56" width="130" height="30" uuid="58f614fe-d365-4639-aabe-11019ac1dc91"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{MKT_EMP_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="287" y="79" width="118" height="30" uuid="47f4adb6-49c1-41a8-a899-4e5395c28ec6"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{CUSTOMER_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="267" y="116" width="119" height="30" uuid="6d5b7227-028d-4647-81eb-8cc7e49067b4"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{BUYER_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="30" y="80" width="100" height="29" uuid="1be416da-6b84-4c77-a9d5-7432546e462a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{UNIT_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="53" y="110" width="130" height="30" uuid="6913b085-d9ac-4953-84d8-4284fa903bd5"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{SUB_UNIT_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="138" width="100" height="30" uuid="fcb7712f-2dc2-4399-b0d7-65fc552ce49c"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{CATEGORY_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="84" y="171" width="100" height="30" uuid="b99bd062-bedb-4be6-baf2-11669a10b138"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{BUTTON_TYPE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="37" y="200" width="100" height="30" uuid="e7b4a05e-24a8-4e42-a7b1-b39a85015d91"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{COLOR_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="141" width="100" height="30" uuid="5c9e3954-fc74-42e6-9a3e-d3e04bcb9c88"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{IS_THIRD_PARTY_TEST_REQ} ? "Yes" : "No"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="171" width="100" height="30" uuid="075e0617-4463-4fb1-bb4a-bd4f054b910b"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{IS_CERTIFICATION_REQUIRED} ? "Yes" : "No"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="259" y="201" width="100" height="30" uuid="51a0603f-6045-4303-b7e9-a0f0f667bf63"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{LOGO_TYPE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="473" y="50" width="100" height="30" uuid="978ca5c7-6461-4316-bc38-bf71ae527a4a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ORDER_QTY}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="517" y="79" width="100" height="30" uuid="2674d4c5-b927-4ddd-9bb5-b00e52b66e8c"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{FINISHED_THICKNESS}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="449" y="140" width="100" height="30" uuid="544c2936-f8bb-4e11-82b6-c4bf2847d73b"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{LEIGN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="504" y="109" width="100" height="30" uuid="7801852d-7385-48b9-befa-2c8deb362a2a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{BLANK_THICKNESS}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="513" y="170" width="100" height="30" uuid="d6e19013-92cb-4986-896b-33488056cb61"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{PROCESS_OF_CASTING}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="508" y="201" width="173" height="30" uuid="8b143f57-8081-41b4-8cfa-701860e33b1a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{PER_SHEET_WEIGHT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="719" y="57" width="100" height="30" uuid="1bf11c2c-34eb-44b9-bc8f-16b7a05713cb"/>
+                <textFieldExpression><![CDATA[$F{CALCULATED_NO_OF_SHEET}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="697" y="79" width="160" height="30" uuid="8084b29e-3ec0-420c-ac6c-04920dbbe73a"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{ACTUAL_NO_0F_SHEET}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="681" y="109" width="139" height="30" uuid="5be753b7-d9f9-45c0-bb64-b602e965e60f"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TOTAL_RESIN_QTY}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="673" y="141" width="133" height="30" uuid="3102063c-d4f5-402e-9649-4bb369e0b06f"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{REQ_TTL_RM_QTY}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="632" y="171" width="71" height="30" uuid="5765af7a-96bb-435f-9708-c95da4ccb10c"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="48" y="50" width="100" height="30" uuid="6887fb4b-01b1-4a7f-af89-c029efe6b4bc"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="12"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{FACTORY_ID} == 1 ? "Dekko Accessories Ltd." : "Agami Accessories Ltd."]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="122" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="48" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="3" width="130" height="20" uuid="0ec52099-dcd7-42f4-8baa-f3874f05208a"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[Production Info]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="770" y="4" width="33" height="30" uuid="cca73f18-99e3-467d-8d51-4b25f89b1de3"/>
+                <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

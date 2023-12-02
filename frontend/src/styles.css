@@ -1,0 +1,272 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~angular-notifier/styles";
+@import url(./assets/css/fonts.css);
+@import url(./assets/css/material-icons.css);
+@import "~@ng-select/ng-select/themes/default.theme.css";
+/* styles.css */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body:not(.layout-fixed) .main-sidebar {
+  height: inherit;
+  min-height: 100%;
+  position: fixed !important;
+  top: 0;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  transition: cursor 0.3s ease-in-out;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.mat-form-field {
+  font-size: 11px;
+}
+
+.ngx-pagination .current {
+  background: #001529 !important;
+  border-radius: 50%;
+}
+
+.table > thead {
+  background: #add8e6;
+  color: #191983;
+  border-top: 3px solid #3c8dbc;
+}
+
+.btn-color {
+  background: #001529;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-color:hover {
+  color: white;
+}
+
+nz-form-item.ant-form-item {
+  transition: none;
+  margin: 5px;
+  line-height: 1.1;
+}
+
+.ant-menu-inline .ant-menu-submenu-title {
+  margin: 0 !important;
+  height: 35px !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.my_tbl_class td:last-child,
+.my_tbl_class th:last-child {
+  position: sticky;
+  right: -15px;
+  z-index: 1;
+  background-color: #add8e6;
+  vertical-align: middle;
+}
+
+.my_tbl_class th:last-child {
+  z-index: 2;
+}
+
+.my_tbl_class td:last-child {
+  background-color: #fff !important;
+}
+
+.ant-card {
+  height: 100% !important;
+}
+
+.ant-card-body {
+  padding: 5px !important;
+}
+
+.app-color-picker {
+  border: 1px solid #e2e2e2 !important;
+}
+
+.app-color-picker .preview {
+  border-radius: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.app-color-picker .preview .preview-background {
+  border-radius: 0 !important;
+}
+
+.app-color-picker .preview .preview-background .circle {
+  width: 100% !important;
+  border-radius: 0 !important;
+}
+
+.thumbnail {
+  height: 80px !important;
+  width: 80px !important;
+}
+
+.thumbnail-xs {
+  height: 37px !important;
+  width: 39px !important;
+}
+
+/*Requisition Input*/
+
+.input {
+  width: 117.234px !important;
+}
+
+.input-xl {
+  width: 180.234px !important;
+}
+
+.input-xs {
+  width: 50.234px !important;
+}
+
+/* My Custom Style */
+
+.mat-list-item-content {
+  color: #fff !important;
+}
+
+.mat-row {
+  min-height: 42px !important;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* .mat-table {
+width: 100%;
+max-width: 100%;
+min-width: 800px;
+display: table;
+border-collapse: collapse;
+text-overflow: ellipsis;
+} */
+
+.mat-table {
+  width: 100%;
+  min-width: 1000px;
+  overflow-y: scroll;
+  display: table;
+  border-collapse: collapse;
+  text-overflow: ellipsis;
+}
+
+.mat-cell {
+  font-size: 15px;
+  margin-right: 10px;
+}
+.mat-header-cell {
+  font-size: 15px;
+  padding-right: 10px;
+}
+.mat-paginator,
+.mat-paginator-page-size .mat-select-trigger {
+  font-size: 15px;
+}
+.ng-select.ng-select-single .ng-select-container {
+  height: 46px !important;
+}
+
+.ng-select.custom .ng-select-container {
+  height: 46px !important;
+}
+
+.ng-select.custom .ng-select-container .ng-value-container .ng-placeholder {
+  padding-top: 7px;
+  padding-left: 7px;
+}
+
+/* matsnackbar custom css */
+
+.isa_info {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.isa_success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.isa_warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.isa_error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.isa_default {
+  color: #333;
+  background-color: #fff;
+}
+
+.mat-snack-bar-container {
+  margin-top: 65px !important;
+  margin-right: 10px !important;
+}
+
+/* end matsnackbar custom css */
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  padding-left: 5px;
+}
+
+.page-title {
+  padding-top: 7px;
+}
+
+.card-header {
+  padding: 1rem 1rem !important;
+  background: #f1f6f2;
+}
+
+.w-75 {
+  width: 75px;
+}
+
+#substitute .mat-form-field-infix {
+  width: 700px !important;
+}
+
+.message-box .mat-dialog-container {
+  padding: 12px 0 0 0;
+  border-radius: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

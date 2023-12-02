@@ -1,0 +1,107 @@
+.app-input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .25);
+    height: 46px;
+    line-height: 18px;
+    padding: 0 15px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid $primary-dark;
+    }
+
+    &:disabled {
+        background: rgba(0, 0, 0, .05);
+        border: 1px solid rgba(0, 0, 0, .15);
+        color: rgba(0,0,0,.38);
+    }
+}
+
+.app-input-with-icon {
+    width: 100%;
+    border-radius: 5px 0px 0px 5px; 
+    border: 1px solid rgba(0, 0, 0, .25);
+    height: 46px;
+    line-height: 18px;
+    padding: 0 15px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid $primary-dark;
+    }
+
+    &:disabled {
+        background: rgba(0, 0, 0, .05);
+        border: 1px solid rgba(0, 0, 0, .15);
+        color: rgba(0,0,0,.38);
+    }
+}
+
+.app-text-area {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .25);
+    min-height: 46px;
+    line-height: 18px;
+    padding: 5px 15px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid $primary-dark;
+    }
+
+    &:disabled {
+        background: rgba(0, 0, 0, .05);
+        border: 1px solid rgba(0, 0, 0, .15);
+        color: rgba(0,0,0,.38);
+    }
+}
+
+// .app-page {
+
+//     max-width: 900px;
+//     margin: 16px auto;
+     
+//     background: $base-light;
+//     border: 1px solid $base-dark;
+//     border-radius: 8px;
+//     padding: 32px;
+  
+//     position: relative;
+    
+//     &__header {
+//       margin-bottom: 32px;
+//       text-align: center;
+//     }
+  
+//     &__content {
+  
+//     }
+  
+//     &__footer {
+//       margin-top: 32px;
+//       display: flex;
+//       justify-content: flex-end;
+//     }
+// }
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 46px !important;
+}
+
+.app-button {
+   
+    padding: 8px 20px;
+    background: transparent;
+    border-radius: 25px;
+    border: 2px solid $primary;
+    transition: 0.25s;
+    margin: 0 4px;
+
+    &:hover, &:focus {
+        background: $primary;
+        border: 2px solid  $primary;
+        color: $on-primary;
+    }
+}

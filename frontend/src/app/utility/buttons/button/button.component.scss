@@ -1,0 +1,17 @@
+::ng-deep .btn-app {
+    height: 42px;
+     min-width: 120px;
+    transition: all linear 0.3s;
+}
+
+@media screen and (max-width: 324px) {
+    ::ng-deep .btn-app {
+         min-width: 80px;
+    }
+  }
+
+  @media screen and (max-width: 704px) {
+    ::ng-deep .btn-app {
+         margin-top: 5px;
+    }
+  }

@@ -1,0 +1,132 @@
+.submit-btn {
+  margin: 0px  0px 20px 0px;
+}
+
+.app-btn-wrap {
+  align-self: center;
+}
+
+.btn-wrapper::ng-deep .btn-warn .btn-app {
+  color: #ffffff;
+  background-color: #f46c36e7;
+  transition: all linear 0.3s;
+}
+
+.btn-wrapper::ng-deep .btn-warn .btn-app:hover {
+  background-color: #f44336;
+  transition: all linear 0.3s;
+
+}
+
+.btn-wrapper::ng-deep .btn-warn .btn-app:focus {
+  background-color: #f44336;
+  transition: all linear 0.3s;
+
+}
+
+.btn-wrapper::ng-deep .btn-prime .btn-app {
+  color: #ffffff;
+  background-color: #3f72b5ec;
+  transition: all linear 0.3s;
+}
+
+.btn-wrapper::ng-deep .btn-prime .btn-app:hover {
+  background-color: #3f51b5;
+  transition: all linear 0.3s;
+
+}
+
+.btn-wrapper::ng-deep .btn-prime .btn-app:focus {
+  background-color: #3f51b5;
+  transition: all linear 0.3s;
+
+}
+
+.btn-wrapper::ng-deep .btn-prime .mat-button-disabled {
+  color: rgba(0,0,0,.26);
+  background-color: rgba(0,0,0,.12);
+}
+
+.btn-wrapper::ng-deep .btn-prime .mat-button-disabled:hover {
+  color: rgba(0,0,0,.26);
+  background-color: rgba(0,0,0,.12);
+}
+
+.btn-wrapper::ng-deep .btn-prime .mat-button-disabled:focus {
+  color: rgba(0,0,0,.26);
+  background-color: rgba(0,0,0,.12);
+}
+
+.btn-app-sub {
+  padding: 5px 80px;
+  min-width: 120px;
+  margin-bottom: 16px;
+}
+
+.myDiv{
+  padding-top: 20px;
+}
+.myDiv span {
+  font-size: 16px;
+}
+.labelPadding{
+  padding-top: 10px;
+}
+.boxpadding{
+  padding-bottom: 10px;
+}
+
+.spanMargin{
+  margin-left: -4%;
+}
+
+.myDiv {
+  position: relative;
+  height: 150px; 
+  width: 215px;
+  float: left;
+}
+
+.myDivButton {
+  position: absolute;
+  top: 30px;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.imageView{
+  height: 150px;
+  width: 200px; 
+  padding-left: 15px; 
+  padding-top: 15px;
+}
+
+.my-btn{
+  position: relative;
+  margin-left: 10px;
+  padding: 5px 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: rgb(7, 7, 7);
+  border:1px solid black;
+  overflow: hidden;
+}
+
+.myFile{
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: scale(5);
+  opacity: 0;
+}
+
+.label-bold {
+  font-weight: bold;
+}

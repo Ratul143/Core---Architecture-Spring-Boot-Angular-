@@ -1,0 +1,184 @@
+<nz-card
+  *ngIf="permission('read')"
+  [nzExtra]="createUser"
+  nzTitle="User Management"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between flex-wrap">
+        <nz-input-group
+          [nzPrefix]="suffixIconSearch"
+          class="my-2"
+          style="max-width: 600px"
+        >
+          <input
+            (ngModelChange)="searchByUsername($event)"
+            [(ngModel)]="searchValueForUsername"
+            nz-input
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="User name"
+            type="text"
+          />
+          <input
+            (ngModelChange)="searchByEmail($event)"
+            [(ngModel)]="searchValueForEmail"
+            nz-input
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="Email"
+            type="text"
+          />
+          <input
+            (ngModelChange)="searchByUserType($event)"
+            [(ngModel)]="searchValueForUserType"
+            nz-input
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="User Type"
+            type="text"
+          />
+          <input
+            (ngModelChange)="searchByCellNo($event)"
+            [(ngModel)]="searchValueForCellNo"
+            nz-input
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="Cell No"
+            type="text"
+          />
+        </nz-input-group>
+        <div class="my-2">
+          Show
+          <select
+            (ngModelChange)="itemsOnChange($event)"
+            [(ngModel)]="itemsPerPage"
+          >
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="500">500</option>
+            <option value="10000">All</option>
+          </select>
+          entries
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 my-2">
+      <div class="table-responsive">
+        <table class="table table-sm text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Username</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Cell No.</th>
+              <th scope="col">Status</th>
+              <th scope="col">Account</th>
+              <th
+                *ngIf="permission('update') || permission('delete')"
+                scope="col"
+              >
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let user of accsUserList
+                  | paginate
+                    : {
+                        currentPage: pageOffset,
+                        itemsPerPage: itemsPerPage,
+                        totalItems: totalItems
+                      };
+                index as i
+              "
+              class="align-middle"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ user?.username }}</td>
+              <td>{{ user?.fullName }}</td>
+              <td>{{ user?.email }}</td>
+              <td></td>
+              <td>{{ user?.cellNo }}</td>
+              <td>
+                <span
+                  class="{{
+                    user.enabled == true
+                      ? 'badge bg-success'
+                      : 'badge bg-danger'
+                  }}"
+                  >{{ user.enabled == true ? "Active" : "Inactive" }}</span
+                >
+              </td>
+              <td>
+                <i
+                  class="{{
+                    user.accountLocked == false
+                      ? 'fa-solid fa-lock-open text-success'
+                      : 'fa-solid fa-lock text-danger'
+                  }}"
+                ></i>
+              </td>
+              <td *ngIf="permission('create')">
+                <span
+                  *ngIf="permission('update')"
+                  (click)="edit(user)"
+                  class="cursor-pointer"
+                  ><i class="fa-solid fa-pen-clip text-info"></i>
+                  <nz-divider nzType="vertical"></nz-divider
+                ></span>
+                <span
+                  *ngIf="permission('delete')"
+                  (nzOnConfirm)="delete(user.id)"
+                  nz-popconfirm
+                  nzPopconfirmPlacement="top"
+                  nzPopconfirmTitle="Are you sure delete this user?"
+                  ><i class="fa fa-trash fa-1x text-danger"></i>
+                  <nz-divider nzType="vertical"></nz-divider
+                ></span>
+                <span
+                  *ngIf="permission('update')"
+                  (nzOnConfirm)="resetPassword(user.email)"
+                  nz-popconfirm=""
+                  nz-tooltip="Reset user password"
+                  nzPopconfirmPlacement="top"
+                  nzOkText="OK"
+                  nzCancelText="Cancel"
+                  nzPopconfirmTitle="Are you sure to reset this password? A new password will be sent to {{
+                    user.email
+                  }}"
+                  ><i class="fa-solid fa-recycle fa-1x"></i>
+                  <nz-divider nzType="vertical"></nz-divider
+                ></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <nz-empty *ngIf="!accsUserList"></nz-empty>
+        <div class="d-flex justify-content-between">
+          <p>Total Records: {{ totalItems }}</p>
+          <pagination-controls
+            (pageChange)="pageChange($event)"
+            class="pull-right"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #createUser>
+    <a
+      (click)="create()"
+      *ngIf="permission('create')"
+      class="btn-sm common-button"
+      ><i class="fa fa-plus"></i>&nbsp;Create</a
+    >
+  </ng-template>
+</nz-card>
+
+<app-no-permission></app-no-permission>
+<ng-template #suffixIconSearch>
+  <i nz-icon nzType="search"></i>
+</ng-template>

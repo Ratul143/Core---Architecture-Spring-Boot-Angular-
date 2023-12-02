@@ -1,0 +1,27 @@
+<nz-card nzTitle="{{operation == 'Update' ? 'Update' : 'Create'}} Form">
+  <form (ngSubmit)="submit()" [formGroup]="approvalWorkFlowForGroup" nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Form Name</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please input the name!">
+        <input formControlName="flowFor" nz-input oninput="this.value = this.value.toUpperCase()"
+               placeholder="e.g: 	SAMPLE REQUISITION"
+               type="text"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Form Code</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please input the code!">
+        <input formControlName="code" nz-input oninput="this.value = this.value.toUpperCase()"
+               placeholder="e.g: S0001"
+               type="text"/>
+      </nz-form-control>
+    </nz-form-item>
+    <div class="text-center my-2">
+      <button (click)="resetForm()" class="mx-3 my-2" nz-button nzType="default" type="button">
+        <i class="fa-regular fa-hand"></i>&nbsp; Reset
+      </button>
+      <button [disabled]="!approvalWorkFlowForGroup.valid" class="save-button" nz-button
+              nzType="primary">{{operation == 'Update' ? 'Update' : 'Create'}}</button>
+    </div>
+  </form>
+</nz-card>

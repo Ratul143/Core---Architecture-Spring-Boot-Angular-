@@ -1,0 +1,10 @@
+<div *ngIf="loaderService.isLoading.value" class="container h-100">
+  <div class="row align-items-center" style="height: 80%">
+    <div class="col-6 mx-auto">
+      <div class="jumbotron">
+        <nz-empty [nzNotFoundContent]='"NO GRAPH AVAILABLE!"'
+                  class="text-danger font-bolder"></nz-empty>
+      </div>
+    </div>
+  </div>
+</div>

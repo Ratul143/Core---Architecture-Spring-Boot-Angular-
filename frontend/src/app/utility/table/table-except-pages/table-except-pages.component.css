@@ -1,0 +1,25 @@
+::ng-deep .material-icons {
+    font-size: 18px !important;
+}
+
+::ng-deep .mat-icon {
+    height: 20px !important;
+}
+
+.mat-column-index {
+    /* flex: 0 0 150px; */
+    flex: 0 0 58px;
+
+}
+
+.button-margin {
+    margin-right: 5px;
+}
+.button-margin:last-child {
+    margin-left: 0px;
+}
+
+.mat-stroked-button{
+    padding: 0 8px;
+    min-width: 30px;
+}

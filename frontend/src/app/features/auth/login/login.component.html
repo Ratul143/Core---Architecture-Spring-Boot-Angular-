@@ -1,0 +1,68 @@
+<div
+  class="mt-100 me-auto ms-auto pb-5 align-middle element"
+  style="width: 500px"
+>
+  <mat-card class="mat-elevation-z3">
+    <mat-card-title class="text-center ps-3 pt-5 pe-3"
+      >Login To Your Account</mat-card-title
+    >
+    <mat-card-content class="p-4">
+      <form (ngSubmit)="login()" [formGroup]="loginFormGroup">
+        <mat-form-field appearance="outline" class="w-100 pb-2">
+          <mat-label>Username</mat-label>
+          <input
+            formControlName="username"
+            matInput
+            placeholder="User676887"
+            type="text"
+          />
+          <mat-error *ngIf="formControls['username'].hasError('required')">
+            Username is <b>required</b>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 pb-2">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            placeholder="*************"
+            type="password"
+          />
+          <mat-error *ngIf="formControls['password'].hasError('required')">
+            Password is <b>required</b>
+          </mat-error>
+          <mat-error
+            *ngIf="formControls['password'].hasError('minlength', 'maxlength')"
+          >
+            Password must be 4 to 15 characters long
+          </mat-error>
+          <mat-error *ngIf="formControls['password'].hasError('serverError')">
+            Password should contain least one character and digit
+          </mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <div class="d-grid gap-2">
+            <button
+              *ngIf="loader"
+              [disabled]="loader"
+              class="w-100"
+              color="primary"
+              mat-raised-button
+            >
+              <nz-spin nzSimple></nz-spin>
+            </button>
+            <button
+              *ngIf="!loader"
+              [disabled]="!loginFormGroup.valid"
+              class="w-100"
+              color="primary"
+              mat-raised-button
+            >
+              Login
+            </button>
+          </div>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

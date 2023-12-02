@@ -1,0 +1,272 @@
+<nz-card class="modal-props" nzTitle="{{operation}} Role Based Permission">
+  <form (ngSubmit)="submit()" [formGroup]="roleBasedPermissionGroup" nz-form>
+    <div class="row">
+      <button (click)="addRow()" class="common-button" type="button">
+        <i class="fas fa-plus-square fa-2x"></i>
+      </button>
+      <div class="d-flex justify-content-between flex-wrap my-3">
+        <nz-select
+          (ngModelChange)="moduleOnChange($event, SELECT, FILTER)"
+          (nzOnSearch)="moduleOnChange($event, SEARCH, FILTER)"
+          [(ngModel)]="moduleUniqueKey"
+          [ngModelOptions]="{standalone: true}"
+          class="select-width"
+          nzAllowClear
+          nzPlaceHolder="e.g. Module"
+          nzServerSearch
+          nzShowSearch
+        >
+          <nz-option
+            *ngFor="let collection of moduleCollection"
+            [nzLabel]="collection?.moduleName"
+            [nzValue]="collection?.uniqueKey"
+          >
+          </nz-option>
+        </nz-select>
+        <nz-select
+          (ngModelChange)="subModuleOnChange($event, SELECT, FILTER)"
+          (nzOnSearch)="subModuleOnChange($event, SEARCH, FILTER)"
+          [(ngModel)]="subModuleUniqueKey"
+          [ngModelOptions]="{standalone: true}"
+          class="select-width"
+          nzAllowClear
+          nzPlaceHolder="e.g. Sub Module"
+          nzServerSearch
+          nzShowSearch
+        >
+          <nz-option
+            *ngFor="let collection of subModuleCollection"
+            [nzLabel]="collection?.subModuleName"
+            [nzValue]="collection?.uniqueKey"
+          >
+          </nz-option>
+        </nz-select>
+        <nz-select
+          (ngModelChange)="componentOnChange($event, SELECT, FILTER)"
+          (nzOnSearch)="componentOnChange($event, SEARCH, FILTER)"
+          [(ngModel)]="componentUniqueKey"
+          [ngModelOptions]="{standalone: true}"
+          class="select-width"
+          nzAllowClear
+          nzPlaceHolder="e.g. Component"
+          nzServerSearch
+          nzShowSearch
+        >
+          <nz-option
+            *ngFor="let collection of componentCollection"
+            [nzLabel]="collection?.componentName"
+            [nzValue]="collection?.uniqueKey"
+          >
+          </nz-option>
+        </nz-select>
+        <input
+          (ngModelChange)="searchByAnyValue($event)"
+          [(ngModel)]="searchByAny"
+          [ngModelOptions]="{standalone: true}"
+          class="select-width"
+          nz-input
+          oninput="this.value = this.value.toUpperCase()"
+          placeholder="Search ..."
+          type="text"
+        />
+      </div>
+      <div class="align-self-start">
+        Show
+        <select
+          (ngModelChange)="itemsOnChange($event)"
+          [(ngModel)]="itemsPerPage"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <option
+            *ngFor="let collection of commonService.pageSizes(); trackBy: trackByFn"
+            label="{{collection?.label}}"
+          >
+            {{collection?.value}}
+          </option>
+        </select>
+        entries
+      </div>
+      <table
+        class="table table-sm table-striped table-bordered text-center align-middle"
+      >
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Sub-Module</th>
+            <th>Component</th>
+            <th>Create</th>
+            <th>Read</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <!-- <th>Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container formArrayName="modules">
+            <ng-container
+              *ngFor="let component of moduleArrayControl.controls | paginate: {
+                    currentPage: pageOffset,
+                    itemsPerPage: itemsPerPage,
+                    totalItems: totalItems
+                    } ; index as i;"
+            >
+              <tr [formGroupName]="i">
+                <td>
+                  <nz-select
+                    (ngModelChange)="moduleOnChange($event, SELECT, null)"
+                    (nzOnSearch)="moduleOnChange($event, SEARCH, null)"
+                    *ngIf="onCreate(i) == null"
+                    class="select-width"
+                    formControlName="moduleUniqueKey"
+                    nzAllowClear
+                    nzPlaceHolder="e.g. Module"
+                    nzServerSearch
+                    nzShowSearch
+                  >
+                    <nz-option
+                      *ngFor="let collection of moduleCollection"
+                      [nzLabel]="collection?.moduleName"
+                      [nzValue]="collection?.uniqueKey"
+                    >
+                    </nz-option>
+                  </nz-select>
+                  <input
+                    *ngIf="onCreate(i)"
+                    class="text-center select-width"
+                    formControlName="moduleName"
+                    nz-input
+                    readonly
+                    type="text"
+                  />
+                </td>
+                <td>
+                  <nz-select
+                    (ngModelChange)="subModuleOnChange($event, SELECT, null)"
+                    (nzOnSearch)="subModuleOnChange($event, SEARCH, null)"
+                    *ngIf="onCreate(i) == null"
+                    class="select-width"
+                    formControlName="subModuleUniqueKey"
+                    nzAllowClear
+                    nzPlaceHolder="e.g. Sub Module"
+                    nzServerSearch
+                    nzShowSearch
+                  >
+                    <nz-option
+                      *ngFor="let collection of subModuleCollection"
+                      [nzLabel]="collection?.subModuleName"
+                      [nzValue]="collection?.uniqueKey"
+                    >
+                    </nz-option>
+                  </nz-select>
+                  <input
+                    *ngIf="onCreate(i)"
+                    class="text-center select-width"
+                    formControlName="subModuleName"
+                    nz-input
+                    readonly
+                    type="text"
+                  />
+                </td>
+                <td>
+                  <nz-select
+                    (ngModelChange)="componentOnChange($event, SELECT, null)"
+                    (nzOnSearch)="componentOnChange($event, SEARCH, null)"
+                    *ngIf="onCreate(i) == null"
+                    class="select-width"
+                    formControlName="componentUniqueKey"
+                    nzAllowClear
+                    nzPlaceHolder="e.g. Component"
+                    nzServerSearch
+                    nzShowSearch
+                  >
+                    <nz-option
+                      *ngFor="let collection of componentCollection"
+                      [nzLabel]="collection?.componentName"
+                      [nzValue]="collection?.uniqueKey"
+                    >
+                    </nz-option>
+                  </nz-select>
+                  <input
+                    *ngIf="onCreate(i)"
+                    class="text-center select-width"
+                    formControlName="componentName"
+                    nz-input
+                    readonly
+                    type="text"
+                  />
+                </td>
+                <td>
+                  <span class="font-bolder">C&emsp;</span
+                  ><label
+                    (change)="actionOnChange(component, $event)"
+                    formControlName="create"
+                    nz-checkbox
+                  ></label>
+                </td>
+                <td>
+                  <span class="font-bolder">R&emsp;</span
+                  ><label
+                    (change)="actionOnChange(component, $event)"
+                    formControlName="read"
+                    nz-checkbox
+                  ></label>
+                </td>
+                <td>
+                  <span class="font-bolder">U&emsp;</span
+                  ><label
+                    (change)="actionOnChange(component, $event)"
+                    formControlName="update"
+                    nz-checkbox
+                  ></label>
+                </td>
+                <td>
+                  <span class="font-bolder">D&emsp;</span
+                  ><label
+                    (change)="actionOnChange(component, $event)"
+                    formControlName="delete"
+                    nz-checkbox
+                  ></label>
+                </td>
+                <!-- <td>
+            <span (click)="removeRow(component, i)" class="cursor-pointer"><i
+              class="fas fa-trash-alt text-danger"></i></span>
+        </td> -->
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+      <nz-empty *ngIf="checkIfRowExists()"></nz-empty>
+      <div class="d-flex justify-content-between">
+        <p>Total Records: {{totalItems}}</p>
+        <pagination-controls
+          (pageChange)="pageChange($event)"
+          class="pull-right"
+        ></pagination-controls>
+      </div>
+    </div>
+    <div class="text-center my-2">
+      <button
+        (click)="resetForm()"
+        class="mx-3 my-2"
+        nz-button
+        nzType="default"
+        type="button"
+      >
+        <i class="fa-regular fa-hand"></i>&nbsp; Reset
+      </button>
+      <button
+        [disabled]="!roleBasedPermissionGroup.valid"
+        class="save-button"
+        nz-button
+        nzType="primary"
+      >
+        {{operation == 'Update' ? 'Update' : 'Create'}}
+      </button>
+    </div>
+  </form>
+</nz-card>
+<ng-template #checkedTemplate><span nz-icon nzType="check"></span></ng-template>
+<ng-template #unCheckedTemplate
+  ><span nz-icon nzType="close"></span
+></ng-template>

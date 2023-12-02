@@ -1,0 +1,65 @@
+<nz-card nzTitle="{{operation}} Module">
+  <form (ngSubmit)="submit()" [formGroup]="moduleGroup" nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Module</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input the module!">
+        <input
+          formControlName="module"
+          nz-input
+          oninput="this.value = this.value.toUpperCase()"
+          placeholder="e.g: RECIPE FROM"
+          type="text"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Icon</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input the icon!">
+        <input
+          formControlName="icon"
+          nz-input
+          placeholder="e.g: appstore"
+          type="text"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Sort Order</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input the sort order!">
+        <input
+          formControlName="sortOrder"
+          nz-input
+          oninput="this.value = this.value.toUpperCase()"
+          placeholder="e.g: 1"
+          type="text"
+          numbersOnly
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Is Active</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <label formControlName="isActive" nz-checkbox></label>
+      </nz-form-control>
+    </nz-form-item>
+    <div class="text-center my-2">
+      <button
+        (click)="resetForm()"
+        class="mx-3 my-2"
+        nz-button
+        nzType="default"
+        type="button"
+      >
+        <i class="fa-regular fa-hand"></i>&nbsp; Reset
+      </button>
+      <button
+        [disabled]="!moduleGroup.valid"
+        class="save-button"
+        nz-button
+        nzType="primary"
+      >
+        {{operation == 'Update' ? 'Update' : 'Create'}}
+      </button>
+    </div>
+  </form>
+</nz-card>

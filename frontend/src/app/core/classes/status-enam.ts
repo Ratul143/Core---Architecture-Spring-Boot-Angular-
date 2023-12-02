@@ -1,0 +1,9 @@
+export enum StatusEnum {
+  DEFAULT = 'DEFAULT',
+  ALL = 'ALL',
+  DRAFT = '0000',
+  SEND_FOR_AUTHORIZATION = '0001',
+  AUTHORIZE = '0002',
+  DELIVERY = '0003',
+  APPROVE = '0004',
+}

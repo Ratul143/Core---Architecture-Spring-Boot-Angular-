@@ -1,0 +1,20 @@
+<ng-select *ngIf="currentLanguage == 'bn'" [items]="items"
+    class="custom"
+    bindLabel="labelBn"
+    [multiple]="true"
+    bindValue="value" 
+    placeholder="{{placeholder|translate}}"
+    [hideSelected]="true"
+    [(ngModel)]="value"
+    [disabled]="isDisabled" (change)="onChanged($event)" (blur)="onBlur()">
+</ng-select>
+<ng-select *ngIf="currentLanguage == 'en'" [items]="items"
+    class="custom"
+    bindLabel="label"
+    [multiple]="true"
+    bindValue="value" 
+    placeholder="{{placeholder|translate}}"
+    [hideSelected]="true"
+    [(ngModel)]="value"
+    [disabled]="isDisabled" (change)="onChanged($event)" (blur)="onBlur()">
+</ng-select>

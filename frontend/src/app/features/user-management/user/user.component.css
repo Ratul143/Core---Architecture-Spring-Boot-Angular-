@@ -1,0 +1,40 @@
+/*.element {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.ant-form {*/
+/*  width: 400px;*/
+/*}*/
+.delete-button {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  color: #cc0000;
+  cursor: pointer;
+  font-size: 12px;
+  height: 20px;
+  padding: 2px;
+  transition: all 0.3s ease;
+  width: 20px;
+  justify-content: center;
+  align-content: center;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+  color: #fff;
+}
+
+.delete-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.3);
+}
+
+.delete-button i {
+  margin: 0;
+  padding: 0;
+}
+
+

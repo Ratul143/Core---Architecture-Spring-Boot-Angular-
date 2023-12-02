@@ -1,0 +1,25 @@
+@import 'assets/css/colors';
+@import "assets/css/input";
+
+.date {
+    display: inline-flex;
+    width: 99.9%;
+}
+
+.mat-datepicker-toggle {
+    min-width: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0px 5px 5px 0px;
+    border-left: none;
+    height: 46px;
+}
+
+:host-context(.form-field_error) {
+    input {
+        border: 1px solid $error;
+    }
+}

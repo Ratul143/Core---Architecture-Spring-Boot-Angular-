@@ -1,0 +1,99 @@
+<div class="card-header">
+  <div class="row">
+    <div class="col-sm-6 text-start">
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="col-sm-6 text-end">
+      <app-button
+        (click)="onClickUpdate()"
+        *ngIf="hasUpdateButton"
+        [type]="'button'"
+        [color]="'warn'"
+        ><mat-icon>edit</mat-icon>{{ "Edit" }}</app-button
+      >
+      &#160;
+      <app-button
+        (click)="onClickImageShow()"
+        *ngIf="hasImageShowButton"
+        [type]="'button'"
+        [color]="'primary'"
+        ><mat-icon>loyalty</mat-icon>{{ "Show images" }}</app-button
+      >
+      &#160;
+      <app-button
+        (click)="onClick()"
+        *ngIf="hasTopButton"
+        [type]="'button'"
+        [color]="'accent'"
+        ><mat-icon>{{ topButtonIcon }}</mat-icon
+        >{{ topButtonText }}</app-button
+      >
+    </div>
+  </div>
+</div>
+<!-- <div class="card-body">
+                  <div class="row">
+                    <ng-container *ngFor="let detail of details">
+                          <div class="col-6 myDiv" *ngIf="detail.type == 'Normal'">
+                                  <div class="row">
+                                    <span class="col-sm-4"><b>{{detail.label }}</b></span>
+                                    <span class="col-sm-1"><b>:</b></span>
+                                    <span *ngIf="currentLanguage == 'bn'" class="col-sm-7">{{detail.valueBn}}</span>
+                                    <span *ngIf="currentLanguage == 'en'" class="col-sm-7">{{detail.valueEn}}</span>
+                                  </div>
+                          </div>
+                          <div class="col-12 myDiv" *ngIf="detail.type == 'Description'">
+                            <div class="row">
+                              <span class="col-sm-2"><b>{{detail.label }}</b></span>
+                              <span class="col-sm-1"><b>:</b></span>
+                              <span *ngIf="currentLanguage == 'bn'" class="col-sm-9 spanMargin">{{detail.valueBn}}</span>
+                              <span *ngIf="currentLanguage == 'en'" class="col-sm-9 spanMargin">{{detail.valueEn}}</span>
+                            </div>
+                          </div>
+                    </ng-container>
+                  </div>
+              </div> -->
+
+<div class="card-body">
+  <div class="row">
+    <ng-container *ngFor="let detail of details">
+      <div class="col-12 col-lg-6 myDiv" *ngIf="detail.type == 'Normal'">
+        <div class="field-wrapper">
+          <span class="field-label"
+            ><p>
+              <b>{{ detail.label }}</b>
+            </p></span
+          >
+          <span class="field-divider"
+            ><p><b>:</b></p></span
+          >
+          <span *ngIf="currentLanguage == 'bn'" class="field-value"
+            ><p>{{ detail.valueBn }}</p></span
+          >
+          <span *ngIf="currentLanguage == 'en'" class="field-value"
+            ><p>{{ detail.valueEn }}</p></span
+          >
+        </div>
+      </div>
+      <div class="col-12 myDiv" *ngIf="detail.type == 'Description'">
+        <div class="field-wrapper">
+          <span class="field-label"
+            ><p>
+              <b>{{ detail.label }}</b>
+            </p></span
+          >
+          <span class="field-divider"
+            ><p><b>:</b></p></span
+          >
+          <span *ngIf="currentLanguage == 'bn'" class="field-value"
+            ><p>{{ detail.valueBn }}</p></span
+          >
+          <span *ngIf="currentLanguage == 'en'" class="field-value"
+            ><p>{{ detail.valueEn }}</p></span
+          >
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,5 @@
+export enum FormsEnum {
+  EXAMPLE_FORM = 'S0001',
+  PRODUCTION_REQUISITION = 'S0002',
+  DESIGN_ENTRY = 'S0003',
+}

@@ -1,0 +1,132 @@
+<div *ngIf="permission('read')" class="row">
+  <div class="col-md-12">
+    <nz-card [nzExtra]="add" nzTitle="Sub Module List">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between flex-wrap">
+          <nz-input-group
+            [nzSuffix]="suffixIconSearch"
+            class="my-2"
+            style="max-width: 260px"
+          >
+            <input
+              (ngModelChange)="search($event)"
+              [(ngModel)]="searchValue"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="Sub Module or Sort Order"
+              type="text"
+            />
+          </nz-input-group>
+          <div class="my-2">
+            Show
+            <select
+              (ngModelChange)="itemsOnChange($event)"
+              [(ngModel)]="itemsPerPage"
+            >
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="500">500</option>
+              <option value="10000">All</option>
+            </select>
+            entries
+          </div>
+        </div>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+        <div class="table-responsive">
+          <table
+            class="table table-sm text-center table-bordered table-striped"
+          >
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Module</th>
+                <th>Sub Module</th>
+                <th>Icon</th>
+                <th>Sort Order</th>
+                <th>Active</th>
+                <th *ngIf="permission('update') || permission('delete')">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let collection of subModuleCollection
+                    | paginate
+                      : {
+                          currentPage: pageOffset,
+                          itemsPerPage: itemsPerPage,
+                          totalItems: totalItems
+                        };
+                  index as i
+                "
+              >
+                <td>{{ getSL(i + 1) }}</td>
+                <td>{{ collection?.module?.moduleName || "N/A" }}</td>
+                <td>{{ collection?.subModuleName || "N/A" }}</td>
+                <td>
+                  <span
+                    [nzType]="collection?.module?.icon"
+                    nz-icon
+                    nzTheme="outline"
+                  ></span
+                  >&emsp;{{ collection?.module?.icon }}
+                </td>
+                <td>{{ collection?.sortOrder }}</td>
+                <td>
+                  <span
+                    class="badge {{
+                      collection?.isActive ? 'bg-success' : 'bg-danger'
+                    }}"
+                    >{{ collection?.isActive ? "Active" : "Inactive" }}</span
+                  >
+                </td>
+                <td *ngIf="permission('update') || permission('delete')">
+                  <span
+                    *ngIf="permission('update')"
+                    (click)="edit(collection)"
+                    class="cursor-pointer"
+                    style="color: #3c8dbc"
+                    ><i class="fa fa-fw fa-edit"></i
+                  ></span>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <span
+                    *ngIf="permission('delete')"
+                    (nzOnConfirm)="delete(collection.id)"
+                    class="cursor-pointer"
+                    nz-popconfirm
+                    nzPopconfirmPlacement="top"
+                    nzPopconfirmTitle="All the related products will be deleted. Are you sure, you want to delete this item?"
+                  >
+                    <i class="fa fa-trash fa-1x text-danger"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <nz-empty *ngIf="!subModuleCollection?.length"></nz-empty>
+          <div class="d-flex justify-content-between">
+            <p>Total Records: {{ totalItems }}</p>
+            <pagination-controls
+              (pageChange)="pageChange($event)"
+              class="pull-right"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+</div>
+<ng-template #add>
+  <a (click)="create()" *ngIf="permission('create')" class="common-button"
+    ><i class="fa fa-plus mx-2"></i>Create</a
+  >
+</ng-template>
+
+<app-no-permission></app-no-permission>

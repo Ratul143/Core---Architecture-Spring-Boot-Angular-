@@ -1,0 +1,32 @@
+<nz-card nzTitle="{{operation == 'Update' ? 'Update' : 'Create'}} Approval Status">
+  <form (submit)="submit()" [formGroup]="approvalWorkFlowStatusGroup">
+    <div class="row">
+      <div class="col-md-12">
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Status Name</nz-form-label>
+          <nz-form-control nzErrorTip="Status name!">
+            <input formControlName="statusName" nz-input oninput="this.value = this.value.toUpperCase()"
+                   placeholder="e.g. SEND FOR APPROVAL"
+                   type="text"/>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Status Code</nz-form-label>
+          <nz-form-control nzErrorTip="Status code!">
+            <input formControlName="code" nz-input oninput="this.value = this.value.toUpperCase()"
+                   placeholder="e.g. 0001"
+                   type="text"/>
+          </nz-form-control>
+        </nz-form-item>
+        <div class="text-center my-3">
+          <button class="save-button" nz-button
+                  nzType="primary">{{operation}}
+          </button>
+          <button class="mx-3" mat-dialog-close="true" nz-button nzType="default" type="button">
+            <i class="fa-regular fa-hand"></i>&nbsp; Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</nz-card>

@@ -1,0 +1,31 @@
+<nz-card nzTitle="{{operation}} Role Permission">
+  <form (ngSubmit)="submit()"[formGroup]="roleGroup" nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Role Name</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input the role!">
+        <input formControlName="role" nz-input oninput="this.value = this.value.toUpperCase()"
+               placeholder="e.g: ROLE_SUPER_ADMIN (Must follow the order)"
+               type="text"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="8" nzRequired>Authorities</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="Please input the role!">
+    <div *ngFor="let collection of authorities; let i = index" class="checkbox-design">
+      <label>
+        <input (change)="authoritiesOnChange($event)" [value]="collection.value" class="my-2"
+               [checked]="collection.checked" type="checkbox"/>
+        {{collection.name}}
+      </label>
+    </div>
+    </nz-form-control>
+    </nz-form-item>
+    <div class="text-center my-2">
+      <button (click)="resetForm()" class="mx-3 my-2" nz-button nzType="default" type="button">
+        <i class="fa-regular fa-hand"></i>&nbsp; Reset
+      </button>
+      <button [disabled]="!roleGroup.valid" class="save-button" nz-button
+              nzType="primary">{{operation == 'Update' ? 'Update' : 'Create'}}</button>
+    </div>
+  </form>
+</nz-card>

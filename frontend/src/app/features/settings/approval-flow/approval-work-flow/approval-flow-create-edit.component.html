@@ -1,0 +1,56 @@
+<nz-card nzTitle="{{operation == 'Update' ? 'Update' : 'Create'}} Approval Flow">
+  <form (ngSubmit)="submit()" [formGroup]="approvalWorkFlowGroup" nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Form Name</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please select a form!">
+        <nz-select formControlName="flowFor" nzAllowClear
+                   nzPlaceHolder="e.g. Requisition Form"
+                   nzShowSearch>
+          <nz-option *ngFor="let element of approvalWorkFlowForCollection"
+                     [nzLabel]="element.flowFor"
+                     [nzValue]="element.id"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Status Name</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please select a status!">
+        <nz-select formControlName="status" nzAllowClear
+                   nzPlaceHolder="e.g: Send For Approval"
+                   nzShowSearch>
+          <nz-option *ngFor="let element of approvalWorkFlowStatusCollection"
+                     [nzLabel]="element.statusName"
+                     [nzValue]="element.id"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Status Level</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24" nzErrorTip="Please input the status level!">
+        <input formControlName="statusLevel" min="0"
+               nz-input
+               placeholder="e.g: 1" type="number"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Is Final Level</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24">
+        <label formControlName="isFinalLevel" nz-checkbox></label>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired>Is Active</nz-form-label>
+      <nz-form-control [nzSm]="19" [nzXs]="24">
+        <label formControlName="isActive" nz-checkbox></label>
+      </nz-form-control>
+    </nz-form-item>
+    <div class="text-center my-2">
+      <button class="mx-3" mat-dialog-close="true" nz-button nzType="default" type="button">
+        <i class="fa-regular fa-hand"></i>&nbsp; Close
+      </button>
+      <button [disabled]="!approvalWorkFlowGroup.valid" class="save-button" nz-button
+              nzType="primary">{{operation}}
+      </button>
+    </div>
+  </form>
+</nz-card>

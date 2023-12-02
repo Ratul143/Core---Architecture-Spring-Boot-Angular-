@@ -1,0 +1,96 @@
+<div *ngIf="permission('read')" class="row">
+  <div class="col-md-12">
+    <nz-card nzTitle="Visitors">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between flex-wrap">
+          <nz-input-group
+            [nzSuffix]="suffixIconSearch"
+            class="my-2"
+            style="max-width: 180px"
+          >
+            <input
+              (ngModelChange)="search($event)"
+              [(ngModel)]="searchValue"
+              nz-input
+              oninput="this.value = this.value.toUpperCase()"
+              placeholder="Search"
+              type="text"
+            />
+          </nz-input-group>
+          <div class="my-2">
+            Show
+            <select
+              (ngModelChange)="itemsOnChange($event)"
+              [(ngModel)]="itemsPerPage"
+            >
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="500">500</option>
+              <option value="10000">All</option>
+            </select>
+            entries
+          </div>
+        </div>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+        <div class="table-responsive">
+          <table
+            class="table table-sm table-striped table-bordered text-center"
+          >
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Username</th>
+                <th>Visitor Name</th>
+                <th>Visitor Email</th>
+                <th>Visitor Role</th>
+                <th>Ip Address</th>
+                <th>Device</th>
+                <th>Visit Type</th>
+                <th>Visited At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let collection of recentVisitorsCollection
+                    | paginate
+                      : {
+                          currentPage: pageOffset,
+                          itemsPerPage: itemsPerPage,
+                          totalItems: totalItems
+                        };
+                  index as i
+                "
+              >
+                <td>{{ getSL(i + 1) }}</td>
+                <td>{{ collection?.username ?? "N/A" }}</td>
+                <td>{{ collection?.visitorName ?? "N/A" }}</td>
+                <td>{{ collection?.visitorEmail ?? "N/A" }}</td>
+                <td>{{ collection?.visitorRole ?? "N/A" }}</td>
+                <td>{{ collection?.ipAddress ?? "N/A" }}</td>
+                <td>{{ collection?.device ?? "N/A" }}</td>
+                <td>{{ collection?.visitType ?? "N/A" }}</td>
+                <td>{{ collection?.visitedAt | date : "medium" ?? "N/A" }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <nz-empty *ngIf="!recentVisitorsCollection?.length"></nz-empty>
+          <div class="d-flex justify-content-between">
+            <p>Total Records: {{ totalItems }}</p>
+            <pagination-controls
+              (pageChange)="pageChange($event)"
+              class="pull-right"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+</div>
+
+<app-no-permission></app-no-permission>

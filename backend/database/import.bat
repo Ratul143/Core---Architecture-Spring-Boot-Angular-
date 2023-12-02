@@ -1,0 +1,1 @@
+impdp system/system@orcl schemas=qrius_erp directory=ORACLECLRDIR dumpfile=qrius_erp.DMP logfile=qrius_erp_log.log

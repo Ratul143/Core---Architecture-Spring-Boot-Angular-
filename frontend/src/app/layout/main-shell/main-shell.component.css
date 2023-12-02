@@ -1,0 +1,272 @@
+.content-wrapper > .content {
+  padding: 19px 1.5rem !important;
+}
+
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+  height: auto;
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  min-width: 290px !important;
+}
+
+.header-trigger {
+  height: 50px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+}
+
+.trigger:hover {
+  color: #337ab7;
+}
+
+.sidebar-logo {
+  position: relative;
+  height: 64px;
+  overflow: hidden;
+  line-height: 64px;
+  transition: all 0.3s;
+  min-height: 50px;
+  max-height: 50px;
+  background-color: #3c8dbc;
+}
+
+.sidebar-logo {
+  line-height: 54px !important;
+  vertical-align: middle;
+}
+
+.sidebar-logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 36px !important;
+  width: 94px !important;
+  margin: auto;
+}
+
+.sidebar-logo h1 {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+}
+
+.nz-header {
+  padding: 0;
+  width: 82%;
+  z-index: 2;
+  position: fixed;
+  /*left:0;*/
+  /*top:0;*/
+  /*right: 0;*/
+  /*z-index: 1000;*/
+}
+
+.nz-header-two {
+  padding: 0;
+  width: 97%;
+  z-index: 2;
+  position: fixed;
+  /*left:0;*/
+  /*top:0;*/
+  /*right: 0;*/
+  /*z-index: 1000;*/
+}
+
+.app-header {
+  height: 52px;
+  background: #3c8dbc;
+  margin: 0px -50px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+nz-content {
+  margin: 8px;
+}
+
+.inner-content {
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+  background: #fff;
+  /* height: 100%; */
+  padding-top: 10px;
+}
+
+app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff; /* You can change the text color as needed */
+  padding-bottom: 2px; /* Adjust padding as needed */
+}
+
+ul li {
+  list-style: none;
+}
+
+ul li:first-child {
+  margin-left: 0;
+}
+
+.ant-layout-header {
+  height: 50px !important;
+  line-height: 50px;
+  color: white;
+}
+
+.icon-size {
+  font-size: 14px;
+}
+
+.nav-dropdown {
+  font-weight: normal;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+.user-header {
+  background-color: #3c8dbc;
+}
+
+li.user-header {
+  height: 175px;
+  padding: 10px;
+  text-align: center;
+}
+
+.user-body {
+  padding: 15px;
+  border-bottom: 1px solid #f4f4f4;
+  border-top: 1px solid #dddddd;
+}
+
+.avatar-img {
+  height: 90px;
+  width: 90px;
+  margin-bottom: 10px;
+  border: 3px solid #73b0e2;
+}
+
+.selectable-menu {
+  width: 350px;
+}
+
+.ant-dropdown-menu {
+  padding: 0;
+}
+
+.ant-dropdown {
+  top: 15px !important;
+  left: 24px !important;
+  position: relative;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.ant-layout-sider-collapsed {
+  min-width: 50px !important;
+  max-width: 50px !important;
+  width: 50px !important;
+}
+
+[nz-menu] {
+  background-color: #222d32;
+}
+
+[nz-menu-item] {
+  background-color: #222d32;
+  text-decoration: none;
+  margin: 5px;
+  height: 27px;
+  padding-bottom: 0;
+}
+
+[nz-menu-item] > a {
+  text-decoration: none;
+  font-size: medium;
+  margin: 0;
+  padding-left: 5px;
+}
+
+ul.ng-star-inserted {
+  background-color: #222d32;
+}
+
+.ant-layout {
+  padding-bottom: 0;
+}
+
+.button {
+  background: #3c8dbc;
+  color: #3c8dbc;
+}
+
+.loader-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: 99;
+}
+
+/*nz-sider{*/
+/*  padding: 0;*/
+/*  width: 100%;*/
+/*  z-index: 2;*/
+/*  position:fixed;*/
+/*}*/
+
+span[nz-icon] {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.sidebar-profile {
+  padding: 10px;
+  margin-left: 35px;
+  overflow: hidden;
+}
+
+.sidebar-profile .user-pic {
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.sidebar-profile .user-pic img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-profile .user-info {
+  float: left;
+  margin-top: 5px;
+}
+
+.sidebar-profile .user-info > span {
+  display: block;
+  font-weight: bold;
+  color: white;
+}

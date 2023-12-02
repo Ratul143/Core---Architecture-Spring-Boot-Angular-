@@ -1,0 +1,60 @@
+<nz-card [nzExtra]="close" nzTitle="Approval Logs">
+  <div class="table-responsive">
+    <table class="table table-sm table-striped table-bordered text-center">
+      <thead>
+        <tr>
+          <th>SL</th>
+          <th>Process By</th>
+          <th>Process Date</th>
+          <th>Current Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="let collection of approvalLogCollection; index as i"
+        >
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>
+              {{
+                collection?.processBy?.firstName +
+                  " " +
+                  collection?.processBy?.lastName
+              }}
+            </td>
+            <td>{{ collection?.processedAt | date }}</td>
+            <td>
+              <span
+                class="badge {{
+                  commonService.approvalStatusColor(
+                    collection?.approvalWorkFlowStatus?.code
+                  )
+                }}"
+                >{{
+                  commonService.approvalStatus(
+                    collection?.approvalWorkFlowStatus?.code
+                  )
+                }}
+              </span>
+              <small
+                *ngIf="collection?.isBacked != null"
+                class="text-danger mx-2 font-bold"
+                >(Backed)</small
+              >
+            </td>
+          </tr>
+          <tr>
+            <th colspan="1"><b>Remarks: </b></th>
+            <td colspan="3" style="text-align: left">
+              {{ collection?.remarks || "N/A" }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <nz-empty *ngIf="!approvalLogCollection?.length"></nz-empty>
+  </div>
+</nz-card>
+<ng-template #close>
+  <span mat-dialog-close="true"><i class="fa fa-times text-danger"></i></span>
+</ng-template>

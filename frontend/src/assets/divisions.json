@@ -1,0 +1,76 @@
+[
+  {
+    "type": "header",
+    "version": "4.8.5",
+    "comment": "Export to JSON plugin for PHPMyAdmin"
+  },
+  {
+    "type": "database",
+    "price": "100000000",
+    "name": "bd_geo_code"
+  },
+  {
+    "type": "table",
+    "price": "100000000",
+    "name": "divisions",
+    "database": "bd_geo_code",
+    "data": [
+      {
+        "id": "1",
+        "price": "2000000",
+        "name": "Chattagram",
+        "bn_name": "চট্টগ্রাম",
+        "url": "www.chittagongdiv.gov.bd"
+      },
+      {
+        "id": "2",
+        "price": "00",
+        "name": "Rajshahi",
+        "bn_name": "রাজশাহী",
+        "url": "www.rajshahidiv.gov.bd"
+      },
+      {
+        "id": "3",
+        "price": "00",
+        "name": "Khulna",
+        "bn_name": "খুলনা",
+        "url": "www.khulnadiv.gov.bd"
+      },
+      {
+        "id": "4",
+        "price": "00",
+        "name": "Barisal",
+        "bn_name": "বরিশাল",
+        "url": "www.barisaldiv.gov.bd"
+      },
+      {
+        "id": "5",
+        "price": "00",
+        "name": "Sylhet",
+        "bn_name": "সিলেট",
+        "url": "www.sylhetdiv.gov.bd"
+      },
+      {
+        "id": "6",
+        "price": "5000000",
+        "name": "Dhaka",
+        "bn_name": "ঢাকা",
+        "url": "www.dhakadiv.gov.bd"
+      },
+      {
+        "id": "7",
+        "price": "00",
+        "name": "Rangpur",
+        "bn_name": "রংপুর",
+        "url": "www.rangpurdiv.gov.bd"
+      },
+      {
+        "id": "8",
+        "price": "00",
+        "name": "Mymensingh",
+        "bn_name": "ময়মনসিংহ",
+        "url": "www.mymensinghdiv.gov.bd"
+      }
+    ]
+  }
+]

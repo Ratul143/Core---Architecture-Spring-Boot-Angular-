@@ -1,0 +1,99 @@
+<nz-card nzTitle="{{operation}} User Based Permission">
+  <form (ngSubmit)="submit()" [formGroup]="userBasedPermissionGroup" nz-form>
+    <label (change)="checkBoxOnChange($event)" class="my-2" nz-checkbox></label
+    >&nbsp;Check All
+    <table class="table table-sm text-center table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>Module</th>
+          <th>Component(s)</th>
+          <th>Create</th>
+          <th>Read</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container formArrayName="components">
+          <ng-container
+            *ngFor="let component of components.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <tr>
+              <td>
+                <label
+                  (change)="parentCheck(component, $event)"
+                  formControlName="check"
+                  nz-checkbox
+                ></label>
+              </td>
+              <td>{{ getModuleName(component) }}</td>
+              <td>
+                <span
+                  [nzType]="getComponentIcon(component)"
+                  class="mx-2"
+                  nz-icon
+                  nzTheme="outline"
+                ></span
+                >{{ getComponentName(component) }}
+              </td>
+              <td>
+                <span class="font-bolder">C&emsp;</span
+                ><label
+                  (change)="actionOnChange(component, $event)"
+                  formControlName="create"
+                  nz-checkbox
+                ></label>
+              </td>
+              <td>
+                <span class="font-bolder">R&emsp;</span
+                ><label
+                  (change)="actionOnChange(component, $event)"
+                  formControlName="read"
+                  nz-checkbox
+                ></label>
+              </td>
+              <td>
+                <span class="font-bolder">U&emsp;</span
+                ><label
+                  (change)="actionOnChange(component, $event)"
+                  formControlName="update"
+                  nz-checkbox
+                ></label>
+              </td>
+              <td>
+                <span class="font-bolder">D&emsp;</span
+                ><label
+                  (change)="actionOnChange(component, $event)"
+                  formControlName="delete"
+                  nz-checkbox
+                ></label>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="text-center my-2">
+      <button
+        (click)="revertToDefaultRole()"
+        class="mx-3 my-2"
+        nz-button
+        nzDanger
+        nzType="primary"
+        type="button"
+      >
+        <i class="fa-regular fa-hand"></i>&nbsp; Revert to Default Role
+      </button>
+      <button
+        [disabled]="!userBasedPermissionGroup.valid"
+        class="save-button"
+        nz-button
+        nzType="primary"
+      >
+        {{operation == 'Update' ? 'Update' : 'Create'}}
+      </button>
+    </div>
+  </form>
+</nz-card>

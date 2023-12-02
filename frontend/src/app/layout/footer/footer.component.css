@@ -1,0 +1,11 @@
+.bottom-bar {
+  background-color: #f8f9fa;
+  padding: 12px 0;
+  text-align: right;
+}
+
+.bottom-bar p {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+}
