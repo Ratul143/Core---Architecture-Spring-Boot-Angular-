@@ -1,15 +1,12 @@
 package jwt.backend.entity.settings.approval_flow;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jwt.backend.entity.BaseEntity;
 import jwt.backend.entity.GlobalApprovalLog;
-import jwt.backend.entity.form_management.Form;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,7 +60,4 @@ public class ApprovalWorkFlowStatus extends BaseEntity {
     @OneToMany(mappedBy = "approvalWorkFlowStatus", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     List<GlobalApprovalLog> globalApprovalLogs;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "approvalWorkFlowStatus", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    List<Form> form;
 }

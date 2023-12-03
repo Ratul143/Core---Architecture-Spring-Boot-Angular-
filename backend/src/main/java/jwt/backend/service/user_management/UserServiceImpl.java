@@ -15,8 +15,6 @@ import jwt.backend.entity.user_management.accs_auth.Accs_Auth_User;
 import jwt.backend.exception.NotFoundException;
 import jwt.backend.exception.user_management.EmailNotFoundException;
 import jwt.backend.repository.user_management.AccsAuthUserRepository;
-import jwt.backend.repository.user_management.AccsCustomerViewRepository;
-import jwt.backend.repository.user_management.AllLookupRepository;
 import jwt.backend.repository.user_management.RoleRepository;
 import jwt.backend.security.entity.UserPrincipalV2;
 import jwt.backend.security.utility.JWTTokenProvider;
@@ -65,8 +63,6 @@ public class UserServiceImpl implements UserService {
     private final JWTTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
     private final UserValidation userValidation;
-    private final AccsCustomerViewRepository accsCustomerViewRepository;
-    private final AllLookupRepository allLookupRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
