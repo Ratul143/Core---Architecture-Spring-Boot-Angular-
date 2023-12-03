@@ -4,8 +4,8 @@ import jwt.backend.entity.settings.approval_flow.ApprovalWorkFlowStatus;
 import jwt.backend.entity.user_management.RecentVisitors;
 import jwt.backend.entity.user_management.accs_auth.Accs_Auth_User;
 
-import javax.persistence.criteria.Predicate;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 

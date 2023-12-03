@@ -4,6 +4,7 @@ import jwt.backend.constant.ApiUrl;
 import jwt.backend.constant.StatusCode;
 import jwt.backend.dto.ChangePasswordDto;
 import jwt.backend.dto.request.auth.LoginRequest;
+import jwt.backend.dto.request.auth.RegistrationRequest;
 import jwt.backend.dto.request.auth.UserCreateRequest;
 import jwt.backend.dto.request.auth.UserUpdateRequest;
 import jwt.backend.dto.response.CommonResponse;
@@ -25,8 +26,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,6 +53,12 @@ public class UserController extends ExceptionHandling {
     public ResponseEntity<LoginResponse> signIn(@Valid @RequestBody LoginRequest loginRequest, HttpServletRequest httpServletRequest) {
         LoginResponse response = userService.signIn(loginRequest, httpServletRequest);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping(ApiUrl.REGISTRATION)
+    public ResponseEntity<CommonResponse> registration(@RequestBody RegistrationRequest request) {
+        CommonResponse response = userService.registration(request);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping(ApiUrl.CREATE)

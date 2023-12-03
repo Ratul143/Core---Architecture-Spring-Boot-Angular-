@@ -30,6 +30,8 @@ public abstract class ApiUrl {
     public static final String USER = "/user";
     public static final String LOGIN = "/login";
     public static final String SIGN_IN = "/sign-in";
+    public static final String REGISTRATION = "/registration";
+
     public static final String ADD = "/add";
     public static final String FIND_USER = "/find/{username}";
     public static final String RESET_PASSWORD = "/reset-password";

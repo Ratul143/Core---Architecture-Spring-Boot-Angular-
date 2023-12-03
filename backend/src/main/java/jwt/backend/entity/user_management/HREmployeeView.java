@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author Jaber

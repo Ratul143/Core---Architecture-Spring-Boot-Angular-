@@ -8,7 +8,7 @@ import jwt.backend.entity.user_management.accs_auth.Accs_Auth_User;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 /**

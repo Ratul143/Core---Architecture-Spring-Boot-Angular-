@@ -6,6 +6,7 @@ import jwt.backend.constant.Topics;
 import jwt.backend.dto.ChangePasswordDto;
 import jwt.backend.dto.common.ValidationDto;
 import jwt.backend.dto.request.auth.LoginRequest;
+import jwt.backend.dto.request.auth.RegistrationRequest;
 import jwt.backend.dto.request.auth.UserCreateRequest;
 import jwt.backend.dto.request.auth.UserUpdateRequest;
 import jwt.backend.dto.response.CommonResponse;
@@ -37,10 +38,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.mail.MessagingException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.mail.MessagingException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -165,6 +166,51 @@ public class UserServiceImpl implements UserService {
             return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.SAVE_FAILED_MESSAGE);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public CommonResponse registration(RegistrationRequest request) {
+        ValidationDto dto = userValidation.validateRegistrationRequest(request);
+        if (!dto.isValid()) {
+            return new CommonResponse(StatusCode.NO_CONTENT, dto.getMessage() + " is required");
+        }
+
+        Accs_Auth_User user = new Accs_Auth_User();
+
+        if(accsAuthUserRepository.existsByIsDeletedAndEmail(false, request.getEmail())) {
+            return new CommonResponse(StatusCode.BAD_REQUEST, "Email is already in use!");
+        }else if(accsAuthUserRepository.existsByIsDeletedAndUsername(false, request.getUsername())) {
+            return new CommonResponse(StatusCode.BAD_REQUEST, "Username is already in use!");
+        }
+
+        //Validate and set Roles
+        Optional<Role> role = roleRepository.findByIdAndDeletedAt(request.getRoleId(), null);
+        if (role.isPresent()) {
+            user.setRole(role.get());
+        } else {
+            return new CommonResponse(StatusCode.NO_CONTENT, "Role not found, please select a valid role");
+        }
+
+        user.setPassword(encodedPassword(request.getPassword()));
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setFullName(request.getFullName());
+        user.setCellNo(request.getCellNo());
+        user.setSignature(request.getSignature());
+        user.setAccountLocked(request.isAccountLocked());
+        user.setEnabled(request.isEnabled());
+        user.setCountryName(request.getCountryName());
+        user.setEmployeeId(request.getEmployeeId());
+
+
+        try {
+            accsAuthUserRepository.save(user);
+            log.info("Inside User service addUser method and user added successfully! ");
+            return new CommonResponse(StatusCode.CREATED, Topics.USER.getName() + CustomMessage.SAVE_SUCCESS_MESSAGE);
+        } catch (DataAccessException e) {
+            log.info("Inside User service addUser method and user creation failed due to Exception: {}", e.getMessage());
+            return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.SAVE_FAILED_MESSAGE);
         }
     }
 

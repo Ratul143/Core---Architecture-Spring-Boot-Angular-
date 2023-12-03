@@ -10,8 +10,8 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;

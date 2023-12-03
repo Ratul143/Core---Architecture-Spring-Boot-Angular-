@@ -6,11 +6,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 import static javax.mail.Message.RecipientType.CC;
@@ -31,18 +31,18 @@ public class EmailService {
 
     @Async
     public void sendNewPasswordEmail(String username, String firstName, String password, String email, String role) throws MessagingException {
-        Message message = createEmail(username, firstName, password, email, role);
-        SMTPTransport smtpTransport = (SMTPTransport) getEmailSession().getTransport(TRANSFER_PROTOCOL);
-        smtpTransport.connect(SMTP_SERVER, USERNAME, PASSWORD);
-        smtpTransport.sendMessage(message, message.getAllRecipients());
-        smtpTransport.close();
+//        Message message = createEmail(username, firstName, password, email, role);
+//        SMTPTransport smtpTransport = (SMTPTransport) getEmailSession().getTransport(TRANSFER_PROTOCOL);
+//        smtpTransport.connect(SMTP_SERVER, USERNAME, PASSWORD);
+//        smtpTransport.sendMessage(message, message.getAllRecipients());
+//        smtpTransport.close();
     }
 
     private Message createEmail(String username, String firstName, String password, String email, String role) throws MessagingException {
         Message message = new MimeMessage(getEmailSession());
         message.setFrom(new InternetAddress(FROM_EMAIL));
-        message.setRecipients(TO, InternetAddress.parse(email, false));
-        message.setRecipients(CC, InternetAddress.parse(CC_EMAIL, false));
+//        message.setRecipients(TO, InternetAddress.parse(email, false));
+//        message.setRecipients(CC, InternetAddress.parse(CC_EMAIL, false));
         message.setSubject(EMAIL_SUBJECT);
         message.setText("Hello " + firstName +
                 ", \n \n Url: " + APPLICATION_URL +
