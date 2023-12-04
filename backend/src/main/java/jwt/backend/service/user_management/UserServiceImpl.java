@@ -164,8 +164,6 @@ public class UserServiceImpl implements UserService {
         } catch (DataAccessException e) {
             log.info("Inside User service addUser method and user creation failed due to Exception: {}", e.getMessage());
             return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.SAVE_FAILED_MESSAGE);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -274,8 +272,6 @@ public class UserServiceImpl implements UserService {
         } catch (DataAccessException e) {
             log.info("Inside User service addUser method and user creation failed due to Exception: {}", e.getMessage());
             return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.UPDATE_FAILED_MESSAGE);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
     }
 
