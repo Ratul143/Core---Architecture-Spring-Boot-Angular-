@@ -223,10 +223,10 @@ public class UserServiceImpl implements UserService {
         try {
             accsAuthUserRepository.save(user);
             emailService.sendNewPasswordEmail(user.getUsername(), user.getFullName(), user.getPassword(), user.getEmail(), user.getRole().getRole());
-            log.info("Inside User service addUser method and user added successfully! ");
+            log.info("Inside User service updateUser method and user added successfully! ");
             return new CommonResponse(StatusCode.CREATED, Topics.USER.getName() + CustomMessage.UPDATE_SUCCESS_MESSAGE);
         } catch (DataAccessException e) {
-            log.info("Inside User service addUser method and user creation failed due to Exception: {}", e.getMessage());
+            log.info("Inside User service updateUser method and user creation failed due to Exception: {}", e.getMessage());
             return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.UPDATE_FAILED_MESSAGE);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
@@ -339,7 +339,7 @@ public class UserServiceImpl implements UserService {
             log.info("Inside User service Change Password method and updated successfully!");
             return new CommonResponse(StatusCode.CREATED, "Password " + CustomMessage.UPDATE_SUCCESS_MESSAGE);
         } catch (NoSuchElementException e) {
-            log.error("User not found with ID: {}", changePasswordDto.getUserId());
+            log.error("User is not found with ID: {}", changePasswordDto.getUserId());
             return new CommonResponse(StatusCode.BAD_REQUEST, CustomMessage.NO_RECORD_FOUND + changePasswordDto.getUserId());
         } catch (AuthenticationException e) {
             log.error("Password doesn't match for user with ID: {}", changePasswordDto.getUserId());

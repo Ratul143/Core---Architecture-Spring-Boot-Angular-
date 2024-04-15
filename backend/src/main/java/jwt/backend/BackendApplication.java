@@ -25,5 +25,4 @@ public class BackendApplication extends SpringBootServletInitializer {
         return new MessageDigestPasswordEncoder("SHA-256");
     }
 
-
 }

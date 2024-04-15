@@ -46,7 +46,7 @@
     "@angular/compiler-cli": "^14.2.0",
     "@types/highcharts": "^7.0.0",
     "@types/jasmine": "~4.0.0",
-    "@webpixels/css": "^1.2.13",
+    "@webpixels/css": "^1.2.6",
     "bootstrap": "^5.2.2",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
