@@ -160,6 +160,10 @@ nz-form-item.ant-form-item {
   overflow-x: auto;
 }
 
+nz-divider .ant-divider-inner-text {
+  font-size: small; /* Adjust the font size as needed */
+}
+
 /* .mat-table {
 width: 100%;
 max-width: 100%;

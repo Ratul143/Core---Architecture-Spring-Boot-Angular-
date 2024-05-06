@@ -1,11 +1,16 @@
 .bottom-bar {
-  background-color: #f8f9fa;
-  padding: 12px 0;
-  text-align: right;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  z-index: 2; /* Set a higher z-index than the form */
 }
 
 .bottom-bar p {
-  margin: 0;
+  margin: 10px;
   font-size: 14px;
+  max-width: 82%;
   color: #888;
+  text-align: right;
 }

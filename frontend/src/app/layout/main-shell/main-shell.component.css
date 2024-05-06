@@ -139,7 +139,7 @@ ul li:first-child {
 
 .nav-dropdown {
   font-weight: normal;
-  font-size: 14px;
+  font-size: smaller;
   color: white;
   text-decoration: none;
 }
@@ -194,6 +194,10 @@ li.user-header {
   background-color: #222d32;
 }
 
+[nz-submenu] {
+  font-size: small;
+}
+
 [nz-menu-item] {
   background-color: #222d32;
   text-decoration: none;
@@ -204,9 +208,11 @@ li.user-header {
 
 [nz-menu-item] > a {
   text-decoration: none;
-  font-size: medium;
+  font-size: small;
   margin: 0;
   padding-left: 5px;
+  vertical-align: 0.4em;
+  line-height: 1.4;
 }
 
 ul.ng-star-inserted {
@@ -239,6 +245,7 @@ ul.ng-star-inserted {
 span[nz-icon] {
   font-size: 15px;
   margin-right: 5px;
+  vertical-align: 0.6em;
 }
 
 .sidebar-profile {
@@ -262,7 +269,8 @@ span[nz-icon] {
 
 .sidebar-profile .user-info {
   float: left;
-  margin-top: 5px;
+  margin-top: 7px;
+  font-size: small;
 }
 
 .sidebar-profile .user-info > span {

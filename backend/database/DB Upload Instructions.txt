@@ -1,0 +1,8 @@
+Please follow the give Sequence to upload the excel files to the DB:
+
+1. Roles
+2. Accs_Auth_User
+3. Modules
+4. Sub_Modules
+5. Component
+6. Role_Based_Permission
